@@ -1,9 +1,6 @@
 package com.bootLogisticSystem.repository;
 
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.After;
@@ -41,7 +38,7 @@ public class RequestRepositoryTest {
 			
 		orderRepository.saveAll(requests);
 		
-		assertEquals(average, orderRepository.getAverageOrderPrice(), 1e-6);
+		assertEquals(average, orderRepository.getTotalAverageOrderPrice(), 1e-6);
 	}
 	
 	
@@ -59,10 +56,6 @@ public class RequestRepositoryTest {
 				.orElse(Double.NaN);
 		
 		orderRepository.saveAll(requests);
-		
-//		System.out.println("");
-//		System.out.println(average);
-//		System.out.println(orderRepository.getAverageOrderPriceFromClient(clientId));
 		
 		assertEquals(average, orderRepository.getAverageOrderPriceFromClient(clientId), 1e-6);
 	}
@@ -102,7 +95,7 @@ public class RequestRepositoryTest {
 				.mapToDouble(Request::getPrice)
 				.sum();
 		
-		assertEquals(totalOrdersPrice, orderRepository.getTotalOrderPrice(), 1e-6);
+		assertEquals(totalOrdersPrice, orderRepository.getSumOfTotalOrderPrice(), 1e-6);
 	}
 	
 	@Test
@@ -118,8 +111,6 @@ public class RequestRepositoryTest {
 				.mapToDouble(Request::getPrice)
 				.sum();
 		
-		assertEquals(totalOrdersPrice, orderRepository.getTotalOrderPriceFromClient(clientId), 1e-6);
+		assertEquals(totalOrdersPrice, orderRepository.getSumOfOrderPriceFromClient(clientId), 1e-6);
 	}
-
-
 }

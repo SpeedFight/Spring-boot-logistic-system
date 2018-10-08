@@ -17,13 +17,13 @@ public interface RequestRepository extends CrudRepository<Request, Integer> {
 	int countByClientId(String clientId);
 	
 	@Query("SELECT SUM(price) FROM Request")
-	double getTotalOrderPrice();
+	double getSumOfTotalOrderPrice();
 	
 	@Query("SELECT SUM(price) FROM Request WHERE clientId=?1")
-	double getTotalOrderPriceFromClient(String clientId);
+	double getSumOfOrderPriceFromClient(String clientId);
 	
 	@Query("SELECT AVG(price) FROM Request")
-	double getAverageOrderPrice();
+	double getTotalAverageOrderPrice();
 	
 	@Query("SELECT AVG(price) FROM Request WHERE clientId=?1")
 	double getAverageOrderPriceFromClient(String clientId);
