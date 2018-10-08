@@ -64,7 +64,7 @@ public class RequestRepositoryTest {
 //		System.out.println(average);
 //		System.out.println(orderRepository.getAverageOrderPriceFromClient(clientId));
 		
-		assertEquals(average, orderRepository.getAverageOrderPriceFromClient(clientId), 0.01);
+		assertEquals(average, orderRepository.getAverageOrderPriceFromClient(clientId), 1e-6);
 	}
 	
 	@Test
@@ -75,5 +75,51 @@ public class RequestRepositoryTest {
 		
 		assertEquals(amount, orderRepository.count());
 	}
+	
+	@Test
+	public void countByClientID() {
+		int amount = 100;
+		List<Request> requests = RandomRequest.generate(amount);
+		String clientId = requests.get(0).getClientId();
+		
+		orderRepository.saveAll(requests);
+		
+		int ordersToClient = (int)requests.stream()
+				.filter(e -> e.getClientId().equals(clientId))
+				.count();	
+		
+		assertEquals(ordersToClient, orderRepository.countByClientId(clientId));
+	}
+	
+	@Test
+	public void getTotalOrderPrice() {
+		int amount = 100;
+		List<Request> requests = RandomRequest.generate(amount);
+		
+		orderRepository.saveAll(requests);
+		
+		double totalOrdersPrice = requests.stream()
+				.mapToDouble(Request::getPrice)
+				.sum();
+		
+		assertEquals(totalOrdersPrice, orderRepository.getTotalOrderPrice(), 1e-6);
+	}
+	
+	@Test
+	public void getTotalOrderPriceFromClient() {
+		int amount = 100;
+		List<Request> requests = RandomRequest.generate(amount);
+		String clientId = requests.get(0).getClientId();
+		
+		orderRepository.saveAll(requests);
+		
+		double totalOrdersPrice = requests.stream()
+				.filter(e -> e.getClientId().equals(clientId))
+				.mapToDouble(Request::getPrice)
+				.sum();
+		
+		assertEquals(totalOrdersPrice, orderRepository.getTotalOrderPriceFromClient(clientId), 1e-6);
+	}
+
 
 }
