@@ -20,21 +20,18 @@ import org.springframework.boot.Banner;
 public class BootLogisticSystemApplication implements CommandLineRunner {
 	
 	@Autowired
-	RequestRepository orderRepository;
+	private RequestRepository orderRepository;
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(BootLogisticSystemApplication.class);
 		 app.setBannerMode(Banner.Mode.OFF);
-		 app.setLogStartupInfo(false);
+//		 app.setLogStartupInfo(false);
 	     app.run(args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		orderRepository.save(new Request("1", 1, "bulka", 5, 7));
-		orderRepository.save(new Request("1", 2, "chlep", 15, 17));
-		orderRepository.save(new Request("1", 3, "cebula", 522, 27));
-		orderRepository.findAll().forEach(e -> System.out.println(e));
+
 		System.out.println("Hello");
 	}
 }
