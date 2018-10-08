@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.bootLogisticSystem.entity.Request;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Request, Integer> {
+public interface RequestRepository extends JpaRepository<Request, Integer> {
 
 }

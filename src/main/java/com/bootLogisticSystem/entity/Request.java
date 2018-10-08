@@ -17,7 +17,16 @@ public class Request {
 	private int quantity;
 	private double price;
 	
-	public Request() {};		
+	public Request() {};	
+
+	public Request(String clientId, int requestId, String name, int quantity, double price) {
+		super();
+		this.clientId = clientId;
+		this.requestId = requestId;
+		this.name = name;
+		this.quantity = quantity;
+		this.price = price;
+	}
 
 	public int getId() {
 		return id;
@@ -66,4 +75,12 @@ public class Request {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
+	@Override
+	public String toString() {
+		return "Request [id=" + id + ", clientId=" + clientId + ", requestId=" + requestId + ", name=" + name
+				+ ", quantity=" + quantity + ", price=" + price + "]";
+	}
+	
+	
 }

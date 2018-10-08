@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.bootLogisticSystem.repository.OrderRepository;
+import com.bootLogisticSystem.entity.Request;
+import com.bootLogisticSystem.repository.RequestRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
@@ -19,7 +20,7 @@ import org.springframework.boot.Banner;
 public class BootLogisticSystemApplication implements CommandLineRunner {
 	
 	@Autowired
-	OrderRepository orderRepository;
+	RequestRepository orderRepository;
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(BootLogisticSystemApplication.class);
@@ -30,6 +31,10 @@ public class BootLogisticSystemApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		orderRepository.save(new Request("1", 1, "bulka", 5, 7));
+		orderRepository.save(new Request("1", 2, "chlep", 15, 17));
+		orderRepository.save(new Request("1", 3, "cebula", 522, 27));
+		orderRepository.findAll().forEach(e -> System.out.println(e));
 		System.out.println("Hello");
 	}
 }
