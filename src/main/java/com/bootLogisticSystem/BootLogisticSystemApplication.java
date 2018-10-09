@@ -89,8 +89,8 @@ public class BootLogisticSystemApplication implements CommandLineRunner {
 //		requests = requestCsvParser.getRequests(new FileInputStream(new File("src/test/testResources/coreImput.csv")));
 ////		requests.forEach(e -> System.out.println(e));	
 //		
-//		System.out.println("parse args:");
-//		CommandLineFileInput.parseArgs(args);
+		System.out.println("parse args:");
+		CommandLine.parseArgsAsFilePath(args);
 			
 			Request requestBad1 = new Request("2123123as asdas", -5, "kleke",-5, 0.2);
 			Request requestBad2 = new Request("212 3123as asdas", -3, "kleke",-5, 0.2);

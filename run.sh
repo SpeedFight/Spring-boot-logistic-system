@@ -2,4 +2,4 @@
 
 #parse input parameters to comma separated list by $(echo $@ |tr ' ' ',')
 
-./mvnw spring-boot:run -Dspring-boot.run.arguments=$(echo $@ |tr ' ' ',')
+java -jar target/bootLogisticSystem-0.0.1-SNAPSHOT.jar $@
