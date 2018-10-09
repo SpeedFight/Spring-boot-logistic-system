@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -11,8 +12,12 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 
+import org.springframework.validation.annotation.Validated;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 @Entity
 @JsonPropertyOrder({"clientId", "requestId", "name", "quantity", "price"})
@@ -68,12 +73,22 @@ public class Request {
 	public void setClientId(String clientId) {
 		this.clientId = clientId;
 	}
+	
+	@JsonSetter("Client_Id")
+	private void setClientIdCSV(String clientId) {
+		this.clientId = clientId;
+	}
 
 	public int getRequestId() {
 		return requestId;
 	}
 
 	public void setRequestId(int requestId) {
+		this.requestId = requestId;
+	}
+	
+	@JsonSetter("Request_id")
+	private void setRequestIdCSV(int requestId) {
 		this.requestId = requestId;
 	}
 
@@ -84,6 +99,11 @@ public class Request {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@JsonSetter("Name")
+	private void setNameCSV(String name) {
+		this.name = name;
+	}
 
 	public int getQuantity() {
 		return quantity;
@@ -92,12 +112,22 @@ public class Request {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	
+	@JsonSetter("Quantity")
+	private void setQuantityCSV(int quantity) {
+		this.quantity = quantity;
+	}
 
 	public double getPrice() {
 		return price;
 	}
 
 	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	@JsonSetter("Price")
+	private void setPriceCSV(double price) {
 		this.price = price;
 	}
 
