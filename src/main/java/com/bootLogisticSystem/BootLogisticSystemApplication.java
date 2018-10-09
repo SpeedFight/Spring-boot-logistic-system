@@ -13,7 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import com.bootLogisticSystem.component.dataParser.DataParser;
 import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.repository.RequestRepository;
-import com.bootLogisticSystem.utils.CommandLineFileInput;
+import com.bootLogisticSystem.utils.CommandLine;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MappingIterator;
@@ -34,8 +34,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
@@ -77,17 +79,78 @@ public class BootLogisticSystemApplication implements CommandLineRunner {
 //		validator = factory.getValidator();	
 //		
 //		Request request = new Request("2123123as asdas", -5, "kleke",-5, 0.2);
+//		orderRepository.save(request);
 //		Set<ConstraintViolation<Request>> requestsValidate = validator.validate(request);
 //		requestsValidate.stream().forEach(e -> System.out.println(e));
 		
 		try {		
 
-		List<Request> requests = requestXmlParser.getRequests(new FileInputStream(new File("src/test/testResources/coreImput.xml")));
-		requests = requestCsvParser.getRequests(new FileInputStream(new File("src/test/testResources/coreImput.csv")));
-//		requests.forEach(e -> System.out.println(e));	
-		
-		System.out.println("parse args:");
-		CommandLineFileInput.parseArgs(args);
+//		List<Request> requests = requestXmlParser.getRequests(new FileInputStream(new File("src/test/testResources/coreImput.xml")));
+//		requests = requestCsvParser.getRequests(new FileInputStream(new File("src/test/testResources/coreImput.csv")));
+////		requests.forEach(e -> System.out.println(e));	
+//		
+//		System.out.println("parse args:");
+//		CommandLineFileInput.parseArgs(args);
+			
+			Request requestBad1 = new Request("2123123as asdas", -5, "kleke",-5, 0.2);
+			Request requestBad2 = new Request("212 3123as asdas", -3, "kleke",-5, 0.2);
+			Request requestBad3 = new Request(null, -3, "kleke",-5, 0.2);
+			Request requestOk = new Request("heh", 2, "kleke",2, 0.2);
+			
+			List<Request> requests = new ArrayList<>();
+			requests.add(requestBad1);
+			requests.add(requestBad2);
+			requests.add(requestOk);
+			requests.add(requestBad3);
+			
+			
+			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+			Validator validator = factory.getValidator();	
+			
+//			List<Request> parsed = requests.stream().filter(request -> validator.validate(request).isEmpty()).collect(Collectors.toList());
+//			parsed.forEach(e -> System.out.println(e));
+			
+			
+			List<String> validatorLog = new ArrayList<String>();
+			List<Request> parsed = requests.parallelStream().filter(request -> {
+				validatorLog.addAll(validator.validate(request).stream()
+						.map(constraintViolation -> String.format("Error in client id:'%s' request id:'%s'. Wrong value:'%s' = '%s' because: '%s'", 
+								((Request)constraintViolation.getRootBean()).getClientId(), 
+								((Request)constraintViolation.getRootBean()).getRequestId(),
+				        		constraintViolation.getPropertyPath(),
+				                constraintViolation.getInvalidValue(), 
+				                constraintViolation.getMessage()
+				        		))
+				        .collect(Collectors.toList()));
+				return validator.validate(request).isEmpty();
+			}).collect(Collectors.toList());
+					
+					
+			parsed.forEach(e -> System.out.println(e));
+			
+//			for(Request request: requests) {
+//				try {
+//					orderRepository.save(request);
+//				} catch (javax.validation.ConstraintViolationException e) {
+//					Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations();
+//					Set<String> messages = new HashSet<>(constraintViolations.size());
+//					messages.addAll(constraintViolations.stream()
+//							.map(constraintViolation -> String.format("Error in client id:'%s' request id:'%s'. Wrong value:'%s' = '%s' because: '%s'", 
+//									((Request)constraintViolation.getRootBean()).getClientId(), 
+//									((Request)constraintViolation.getRootBean()).getRequestId(),
+//					        		constraintViolation.getPropertyPath(),
+//					                constraintViolation.getInvalidValue(), 
+//					                constraintViolation.getMessage()
+//					        		))
+//					        .collect(Collectors.toList()));
+//					
+//					messages.forEach(k-> System.out.println(k));
+//				}
+//				
+//			}
+
+//			orderRepository.findAll().forEach(e -> System.out.println(e));
+			
 			
 			
 		} catch (Exception e2) {

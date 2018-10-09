@@ -29,15 +29,15 @@ public class Request {
 	@JsonIgnore
 	private int id;
 	
-	@NotBlank
+	@NotBlank(message = "Client Id can't be empety")
 	@Pattern(regexp = "^[\\p{Alnum}]{1,6}$",
-			message = "Client Id must be between 1 and 6 alphanumeric characters without whitespaces between characters")
+			message = "Client Id must be between 1 and 6 alphanumeric characters without whitespaces between")
 	private String clientId;
 
 	@PositiveOrZero(message = "Request Id must be positive or zero")
 	private int requestId;
 	
-	@NotBlank
+	@NotBlank(message = "Name can't be empety")
 	@Size(min = 1, max = 255, 
 			message = "Name must be between 1 and 255 characters")
 	private String name;
