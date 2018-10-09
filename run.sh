@@ -1,3 +1,5 @@
 #!/bin/bash
 
-./mvnw spring-boot:run -Dspring-boot.run.arguments=$@
+#parse input parameters to comma separated list by $(echo $@ |tr ' ' ',')
+
+./mvnw spring-boot:run -Dspring-boot.run.arguments=$(echo $@ |tr ' ' ',')
