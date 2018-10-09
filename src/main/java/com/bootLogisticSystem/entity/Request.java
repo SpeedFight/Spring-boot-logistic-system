@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
@@ -29,8 +30,8 @@ public class Request {
 	private int id;
 	
 	@NotBlank
-	@Size(min = 1, max = 6, 
-			message = "Client Id must be between 1 and 6 characters")
+	@Pattern(regexp = "^[\\p{Alnum}]{1,6}$",
+			message = "Client Id must be between 1 and 6 alphanumeric characters without whitespaces between characters")
 	private String clientId;
 
 	@PositiveOrZero(message = "Request Id must be positive or zero")
