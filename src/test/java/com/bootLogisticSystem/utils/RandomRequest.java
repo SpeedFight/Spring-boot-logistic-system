@@ -28,8 +28,8 @@ public class RandomRequest {
 					getRandomClientId(), 
 					random.nextInt(clientsId.size()), 
 					getRandomProduct(), 
-					random.nextInt(1+amount*5), 
-					random.nextInt(1+amount*4)));
+					Math.abs(random.nextInt(1+amount*5)), 
+					Math.abs(random.nextDouble()*amount*4.0)));
 		}
 		
 		return requests;
@@ -61,8 +61,8 @@ public class RandomRequest {
 					"Pory","Cukier","Cukierki"}));
 
 	private static List<String> clientsId = new ArrayList<>
-			(Arrays.asList(new String[] { "Lili", "Larry", "Lisa", "Ophelia",
-			"Oscar", "Pablo", "Allison", "Arthur", "Rafael", "Sebastien", "Sally", "Karl", "Katrina", "Kirk",
-			"Virginie", "Vince", "Valerie", "Youko", "Sachiko", "Mieko", "Toshie" }));
+			(Arrays.asList(new String[] { "Lili", "Larry", "Lisa", "c3p0",
+			"Oscar", "Pablo", "2", "Arthur", "Rafael", "1", "Sally", "Karl", "a123", "Kirk",
+			"12", "Vince", "b1", "Youko", "a1", "Mieko", "Toshie" }));
 
 }

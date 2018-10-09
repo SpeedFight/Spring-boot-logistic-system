@@ -10,9 +10,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 
-import com.bootLogisticSystem.component.DataParser;
+import com.bootLogisticSystem.component.dataParser.DataParser;
 import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.repository.RequestRepository;
+import com.bootLogisticSystem.utils.CommandLineFileInput;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MappingIterator;
@@ -29,6 +30,9 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.Reader;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -76,11 +80,14 @@ public class BootLogisticSystemApplication implements CommandLineRunner {
 //		Set<ConstraintViolation<Request>> requestsValidate = validator.validate(request);
 //		requestsValidate.stream().forEach(e -> System.out.println(e));
 		
-		try {
+		try {		
 
 		List<Request> requests = requestXmlParser.getRequests(new FileInputStream(new File("src/test/testResources/coreImput.xml")));
 		requests = requestCsvParser.getRequests(new FileInputStream(new File("src/test/testResources/coreImput.csv")));
-		requests.forEach(e -> System.out.println(e));	
+//		requests.forEach(e -> System.out.println(e));	
+		
+		System.out.println("parse args:");
+		CommandLineFileInput.parseArgs(args);
 			
 			
 		} catch (Exception e2) {

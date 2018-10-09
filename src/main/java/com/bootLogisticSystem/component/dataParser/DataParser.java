@@ -1,4 +1,4 @@
-package com.bootLogisticSystem.component;
+package com.bootLogisticSystem.component.dataParser;
 
 import java.io.IOException;
 import java.io.InputStream;
