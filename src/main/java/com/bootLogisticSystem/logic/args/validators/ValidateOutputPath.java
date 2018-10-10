@@ -9,8 +9,7 @@ public class ValidateOutputPath {
 
 	public ValidateOutputPath() {};
 	
-	public File  validate(String outputPath) {
-		
+	public File  validate(String outputPath) {		
 		return null;
 	}
 }
