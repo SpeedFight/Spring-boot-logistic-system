@@ -28,7 +28,7 @@ public class RandomRequest {
 					getRandomClientId(), 
 					random.nextInt(clientsId.size()), 
 					getRandomProduct(), 
-					Math.abs(random.nextInt(1+amount*5)), 
+					1+Math.abs(random.nextInt(amount*5)), 
 					Math.abs(random.nextDouble()*amount*4.0)));
 		}
 		
