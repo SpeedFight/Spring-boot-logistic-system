@@ -1,15 +1,12 @@
 package com.bootLogisticSystem.utils;
 
 import java.io.File;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.MissingOptionException;
-import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
@@ -20,14 +17,9 @@ public class InputArgumentParser {
 	
 	private Options options;
 
+	@SuppressWarnings("static-access")
 	public InputArgumentParser() {
 		options = new Options();
-//		options.addRequiredOption("", "input", false, "One or more .xml/.csv files with orders");
-//		options.addOption( OptionBuilder.withLongOpt( "block-size" )
-//                .withDescription( "use SIZE-byte blocks" )
-//                .hasArg()
-//                .withArgName("SIZE")
-//                .create() );
 		
 		options.addOption( OptionBuilder
 				.withArgName("i")

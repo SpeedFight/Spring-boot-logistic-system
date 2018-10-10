@@ -50,6 +50,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.Banner;
 
+/**
+ * This is main configuration class to run this program. Purpose of this piece
+ * of software is read, parse, push to database and compute all input data by
+ * way defined by user. It's all made with use of spring boot, why? Because why
+ * not? We get database configuration for "free", data validation almost for
+ * "free", IoC for "free". *free -> in matter of time spend to develop and test.
+ * 
+ * @author Karol Łukasiewicz
+ *
+ */
 @SpringBootApplication
 @EnableJpaRepositories("com.bootLogisticSystem.repository")
 @EntityScan("com.bootLogisticSystem.entity")
@@ -57,13 +67,7 @@ import org.springframework.boot.Banner;
 public class BootLogisticSystemApplication implements CommandLineRunner {
 
 	@Autowired
-	private RequestRepository orderRepository;
-
-	@Autowired
-	private DataParser requestXmlParser;
-
-	@Autowired
-	private DataParser requestCsvParser;
+	private Main main;
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(BootLogisticSystemApplication.class);
@@ -74,22 +78,7 @@ public class BootLogisticSystemApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		try {
-
-			System.out.println("parse args:");
-			new InputArgumentParser().parseArgsAsFilePath(args);
-
-		} catch (InvalidParameterException e) {
-			/*
-			 * heh I was almost forced to face the fact that my argument validation was bad,
-			 * but I see here that you made a typo hahaha, tough luck pal.
-			 */
-		} catch (Exception e) {
-			/*
-			 * It is my fault now.
-			 */
-			e.printStackTrace();
-		}
+		main.main(args);
 
 		System.out.println("End program");
 	}
