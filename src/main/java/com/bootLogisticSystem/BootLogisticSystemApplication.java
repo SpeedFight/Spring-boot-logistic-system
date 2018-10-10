@@ -78,7 +78,7 @@ public class BootLogisticSystemApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		main.main(args);
+//		main.main(args);
 
 		System.out.println("End program");
 	}
