@@ -30,7 +30,7 @@ public class Main {
 		try {
 
 			System.out.println("parse args:");
-			new InputArgumentParser().parseArgsAsFilePath(args);
+			new InputArgumentParser().parseArgs(args);
 
 		} catch (InvalidParameterException e) {
 			/*

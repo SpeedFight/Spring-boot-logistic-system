@@ -15,7 +15,7 @@ import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.model.ValidationError;
 
 @Component
-public class ValidateRequest implements CustomInputValidator<Request>{
+public class RequestDataValidator implements DataValidator<Request>{
 	
 	private final String formatString = "Error in client id:'%s' request id:'%s'. Wrong value:'%s' = '%s' because: '%s'";
 	private final List<String> errors;
@@ -23,7 +23,7 @@ public class ValidateRequest implements CustomInputValidator<Request>{
 	Validator validator;
 	
 	@Autowired
-	private ValidateRequest(ValidationError validationError) {
+	private RequestDataValidator(ValidationError validationError) {
 		errors = validationError.getErrors();
 		validatorFactory = Validation.buildDefaultValidatorFactory();
 		validator = validatorFactory.getValidator();	
