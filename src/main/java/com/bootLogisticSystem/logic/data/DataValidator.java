@@ -1,4 +1,4 @@
-package com.bootLogisticSystem.component.validator;
+package com.bootLogisticSystem.logic.data;
 
 import java.util.List;
 

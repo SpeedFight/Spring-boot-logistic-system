@@ -1,4 +1,4 @@
-package com.bootLogisticSystem.utils;
+package com.bootLogisticSystem.logic.args;
 
 import java.io.File;
 import java.util.List;
@@ -65,7 +65,7 @@ public class InputArgumentParser {
 		String clientId = commandLine.getOptionValue("client-id");
 		
 		// more specific validation
-		return InputArgumentValidator.validate(inputPaths, outputPath, raportType, clientId);		
+		return new InputArgumentValidator().validate(inputPaths, outputPath, raportType, clientId);		
 	}
 
 	private void printHelp() {

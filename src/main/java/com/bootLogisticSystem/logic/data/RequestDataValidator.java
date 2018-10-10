@@ -1,4 +1,4 @@
-package com.bootLogisticSystem.component.validator;
+package com.bootLogisticSystem.logic.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.model.ValidationError;
 
-@Component
 public class RequestDataValidator implements DataValidator<Request>{
 	
 	private final String formatString = "Error in client id:'%s' request id:'%s'. Wrong value:'%s' = '%s' because: '%s'";

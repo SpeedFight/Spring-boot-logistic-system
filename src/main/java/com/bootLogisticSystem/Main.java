@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 import com.bootLogisticSystem.component.dataParser.DataParser;
 import com.bootLogisticSystem.exception.InvalidParameterException;
+import com.bootLogisticSystem.logic.args.InputArgumentParser;
 import com.bootLogisticSystem.repository.RequestRepository;
-import com.bootLogisticSystem.utils.InputArgumentParser;
 
 /**
  * This class main class of this program, that contain all logic.
@@ -17,14 +17,14 @@ import com.bootLogisticSystem.utils.InputArgumentParser;
 @Component
 public class Main {
 
-	@Autowired
-	private RequestRepository orderRepository;
-
-	@Autowired
-	private DataParser requestXmlParser;
-
-	@Autowired
-	private DataParser requestCsvParser;
+//	@Autowired
+//	private RequestRepository orderRepository;
+//
+//	@Autowired
+//	private DataParser requestXmlParser;
+//
+//	@Autowired
+//	private DataParser requestCsvParser;
 
 	public void main(String[] args) {
 		try {
