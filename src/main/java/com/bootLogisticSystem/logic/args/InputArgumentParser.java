@@ -65,7 +65,9 @@ public class InputArgumentParser {
 		String clientId = commandLine.getOptionValue("client-id");
 		
 		// more specific validation
-		return new InputArgumentValidator().validate(inputPaths, outputPath, raportType, clientId);		
+		InputArgument inputArgument = new InputArgumentValidator().validate(inputPaths, outputPath, raportType, clientId);
+		
+		return inputArgument;	
 	}
 
 	private void printHelp() {
