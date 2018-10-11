@@ -26,18 +26,10 @@ public class ValidateOutputPath {
 		 }
 
 		 
-//		if (Files.isReadable(path) && Files.isWritable(path)) {
+//		if (Files.isReadable(path)) {
 //			throw new InvalidParameterException("Path to save output file: " + outputPath + " is unacessable.");
 //		}
-		 
-		
-//		if (!file.isDirectory())
-//			   if(!file.getParentFile().mkdirs()) {
-//				   throw new InvalidParameterException("Can't create directories to: " + outputPath);
-//			   }
-//		if (file.exists()){
-//			//overwrite
-//		}
+	
 		 
 		 Path path = Paths.get(outputPath);
 		 try {
