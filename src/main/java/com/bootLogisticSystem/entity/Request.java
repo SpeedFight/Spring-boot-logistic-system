@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 @Entity
 @JsonPropertyOrder({"clientId", "requestId", "name", "quantity", "price"})
-public class Request {
+public class Request implements GenerateAble{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
