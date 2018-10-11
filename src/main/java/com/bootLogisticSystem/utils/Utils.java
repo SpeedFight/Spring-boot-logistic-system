@@ -10,7 +10,7 @@ public class Utils {
 	
 	public static String getFileExtensionFromPath(String filePath) throws NoFileExtensionException {
         Optional<String> extension = Optional.empty();
-        
+ 
         try {
         	extension = Optional.of(filePath.substring(filePath.lastIndexOf(".")));			
 		} catch (StringIndexOutOfBoundsException e) {
@@ -23,7 +23,5 @@ public class Utils {
 
         //eg. convert '.xml' to 'xml'
         return extension.get().substring(1);
- 
     }
-
 }
