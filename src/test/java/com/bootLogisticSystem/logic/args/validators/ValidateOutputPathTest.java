@@ -33,7 +33,7 @@ public class ValidateOutputPathTest {
 	
 	@Test
 	public void createNewFile() throws InvalidParameterException, IOException {
-		String path = "src/test/testResources/output.xml";
+		String path = "src/test/testResources/test.xml";
 		
 		File createdFile = validateOutputPath.validate(path);
 		
@@ -42,7 +42,7 @@ public class ValidateOutputPathTest {
 	
 	@Test
 	public void createNewFileAndDirectory() throws InvalidParameterException, IOException {
-		String path = "src/test/testResources/newDirectory/output.xml";
+		String path = "src/test/testResources/newDirectory/test.xml";
 		
 		File createdFile = validateOutputPath.validate(path);
 		
@@ -50,6 +50,33 @@ public class ValidateOutputPathTest {
 		
 		createdFile.getParentFile().delete();
 	}	
+	
+	@Test
+	public void createNewFileWrongExtension() throws InvalidParameterException, IOException {
+		String path = "src/test/testResources/test.txt";
+		
+		File createdFile = validateOutputPath.validate(path);
+		
+		assertTrue(testWriteToFile(createdFile,"testString"));		
+	}
+	
+	@Test
+	public void createNewFileNoExtension() throws InvalidParameterException, IOException {
+		String path = "src/test/testResources/test";
+		
+		File createdFile = validateOutputPath.validate(path);
+		
+		assertTrue(testWriteToFile(createdFile,"testString"));		
+	}
+	
+	@Test
+	public void createNewFileNoExtensionDot() throws InvalidParameterException, IOException {
+		String path = "src/test/testResources/test.";
+		
+		File createdFile = validateOutputPath.validate(path);
+		
+		assertTrue(testWriteToFile(createdFile,"testString"));		
+	}
 	
 	
 	private boolean testWriteToFile(File file, String testString) throws IOException {

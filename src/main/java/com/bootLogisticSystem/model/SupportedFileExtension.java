@@ -13,5 +13,9 @@ public enum SupportedFileExtension {
 	public String getFileExtension() {
 		return fileExtension;
 	}
+	
+	public static String getDefaultFileExtension() {
+		return SupportedFileExtension.CSV.getFileExtension();
+	}
 
 }

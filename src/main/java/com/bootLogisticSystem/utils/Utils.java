@@ -1,5 +1,6 @@
 package com.bootLogisticSystem.utils;
 
+import java.io.File;
 import java.util.Optional;
 
 import com.bootLogisticSystem.exception.NoFileExtensionException;
@@ -32,7 +33,7 @@ public class Utils {
 		if(!filePath.endsWith(".")) {
 			filePath = filePath.concat(".");
 		}
-		return filePath.concat(SupportedFileExtension.CSV.getFileExtension());		
+		return filePath.concat(SupportedFileExtension.getDefaultFileExtension());		
 	}
 	
 	public static boolean isFileExtensionSupported(String filePath) throws NoFileExtensionException, WrongFilePathExtension {
@@ -46,5 +47,14 @@ public class Utils {
 		
 		throw new WrongFilePathExtension("File extension:" + fileExtension + 
 				" for file: " +  filePath + " not supported");
+	}
+	
+	public static String getPathToFileWithDefaultName(String pathToDirectory) {
+		if(!pathToDirectory.endsWith(File.separator)) {
+			pathToDirectory = pathToDirectory.concat(File.separator);
+		}
+		
+		
+		return pathToDirectory.concat("output.").concat(SupportedFileExtension.getDefaultFileExtension());
 	}
 }
