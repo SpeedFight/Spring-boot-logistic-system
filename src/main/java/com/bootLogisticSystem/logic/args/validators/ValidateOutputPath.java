@@ -33,7 +33,8 @@ public class ValidateOutputPath {
 				 Files.createDirectories(path.getParent());
 			 }			
 		} catch (Exception e) {
-			throw new InvalidParameterException(e.getMessage());
+			throw new InvalidParameterException("Can't create directories to: " 
+					+ outputPath + "because: " + e.getMessage());
 		}
 			
 		return file;
