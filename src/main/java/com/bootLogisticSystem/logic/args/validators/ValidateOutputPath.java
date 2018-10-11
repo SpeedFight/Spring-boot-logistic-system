@@ -15,15 +15,16 @@ public class ValidateOutputPath {
 
 	public ValidateOutputPath() {};
 	
-	public File  validate(String outputPath) throws InvalidParameterException{		
+	public File validate(String outputPath) throws InvalidParameterException{		
 		 File file = new File(outputPath);
-		 Path path = Paths.get(outputPath);
+		 
 		 
 		 try {
-			System.out.println(Utils.getFileExtensionFromPath(outputPath));
-		} catch (NoFileExtensionException e) {
-			
-		}
+			Utils.isFileExtensionSupported(outputPath);
+		 } catch (NoFileExtensionException | WrongFilePathExtension e) {
+			outputPath = Utils.addDefaultFileExtension(outputPath);
+		 }
+
 		 
 //		if (Files.isReadable(path) && Files.isWritable(path)) {
 //			throw new InvalidParameterException("Path to save output file: " + outputPath + " is unacessable.");
@@ -37,6 +38,8 @@ public class ValidateOutputPath {
 //		if (file.exists()){
 //			//overwrite
 //		}
+		 
+		 Path path = Paths.get(outputPath);
 		 try {
 			 if(!Files.exists(path)) {
 				 Files.createDirectories(path.getParent());
