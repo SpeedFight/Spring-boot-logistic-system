@@ -6,7 +6,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import com.bootLogisticSystem.exception.InvalidParameterException;
+import com.bootLogisticSystem.exception.NoFileExtensionException;
+import com.bootLogisticSystem.exception.WrongFilePathExtension;
 import com.bootLogisticSystem.model.RaportType;
+import com.bootLogisticSystem.utils.Utils;
 
 public class ValidateOutputPath {
 
@@ -15,6 +18,12 @@ public class ValidateOutputPath {
 	public File  validate(String outputPath) throws InvalidParameterException{		
 		 File file = new File(outputPath);
 		 Path path = Paths.get(outputPath);
+		 
+		 try {
+			System.out.println(Utils.getFileExtensionFromPath(outputPath));
+		} catch (NoFileExtensionException e) {
+			
+		}
 		 
 //		if (Files.isReadable(path) && Files.isWritable(path)) {
 //			throw new InvalidParameterException("Path to save output file: " + outputPath + " is unacessable.");

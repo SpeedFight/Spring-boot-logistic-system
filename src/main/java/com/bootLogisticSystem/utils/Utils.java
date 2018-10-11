@@ -1,24 +1,28 @@
 package com.bootLogisticSystem.utils;
 
-import java.io.File;
+import java.util.Optional;
+
+import com.bootLogisticSystem.exception.NoFileExtensionException;
 
 public class Utils {
 	
 	private Utils() {};
 	
-	public static String getFileExtension(File file) {
-        String extension = "";
- 
+	public static String getFileExtensionFromPath(String filePath) throws NoFileExtensionException {
+        Optional<String> extension = Optional.empty();
+        
         try {
-            if (file != null && file.exists()) {
-                String name = file.getName();
-                extension = name.substring(name.lastIndexOf("."));
-            }
-        } catch (Exception e) {
-            extension = "";
+        	extension = Optional.of(filePath.substring(filePath.lastIndexOf(".")));			
+		} catch (StringIndexOutOfBoundsException e) {
+			throw new NoFileExtensionException("No file extension");
+		}
+        
+        if(!extension.isPresent()) {
+        	throw new NoFileExtensionException("No file extension");
         }
- 
-        return extension;
+
+        //eg. convert '.xml' to 'xml'
+        return extension.get().substring(1);
  
     }
 
