@@ -12,6 +12,9 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.validation.annotation.Validated;
 
@@ -22,8 +25,15 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+/**
+ * This class represent data entity for input/output reports.
+ * @author Karol Łukasiewicz
+ *
+ */
 @Entity
 @JsonPropertyOrder({"clientId", "requestId", "name", "quantity", "price"})
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Request implements GenerateAble{
 	
 	@Id
@@ -33,7 +43,7 @@ public class Request implements GenerateAble{
 	
 	@NotBlank(message = "Client Id can't be empety")
 	@Pattern(regexp = "^[\\p{Alnum}]{1,6}$",
-			message = "Client Id must be between 1 and 6 alphanumeric characters without whitespaces between")
+			message = "Client Id must be between 1 and 6 long, alphanumeric characters without whitespaces between")
 	private String clientId;
 
 	@PositiveOrZero(message = "Request Id must be positive or zero")

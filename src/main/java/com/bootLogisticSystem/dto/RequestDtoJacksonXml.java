@@ -2,18 +2,21 @@ package com.bootLogisticSystem.dto;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+
 import com.bootLogisticSystem.entity.GenerateAble;
 import com.bootLogisticSystem.entity.Request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 public class RequestDtoJacksonXml implements GenerateAble {
 	// look at me, now I generate correct elements tag in xml
+	
 	@JsonProperty
-	@JacksonXmlElementWrapper(localName = "requests")
-	@JacksonXmlProperty(localName = "request")
+	@XmlElementWrapper(name = "request")
+	@XmlElement(name = "request")
+	@JacksonXmlElementWrapper(useWrapping = false)
 	private List<Request> requests;
 
 	private RequestDtoJacksonXml() {};
