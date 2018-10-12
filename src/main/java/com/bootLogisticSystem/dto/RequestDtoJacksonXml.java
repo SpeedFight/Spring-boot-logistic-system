@@ -9,13 +9,21 @@ import com.bootLogisticSystem.entity.GenerateAble;
 import com.bootLogisticSystem.entity.Request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+/**
+ * Data transfer object to serialise object with correct element name.
+ * 
+ * @author speedfight
+ *
+ */
+@JacksonXmlRootElement(localName = "requests")
 public class RequestDtoJacksonXml implements GenerateAble {
 	// look at me, now I generate correct elements tag in xml
 	
 	@JsonProperty
-	@XmlElementWrapper(name = "request")
-	@XmlElement(name = "request")
+	@JacksonXmlProperty(localName = "request")
 	@JacksonXmlElementWrapper(useWrapping = false)
 	private List<Request> requests;
 

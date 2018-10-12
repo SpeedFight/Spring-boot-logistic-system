@@ -22,5 +22,7 @@ public class XmlRaportWriterTest {
 		xmlRaportWriter.write(
 				new File("src/test/testResources/testOutputFolder/out.xml"), 
 				RandomRequest.generate(100));
+		
+		
 	}
 }
