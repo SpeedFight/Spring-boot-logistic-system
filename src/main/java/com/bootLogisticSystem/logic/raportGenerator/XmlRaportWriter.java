@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.bootLogisticSystem.dto.RequestDtoJacksonXml;
@@ -22,13 +23,15 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 @Component
 public class XmlRaportWriter implements RaportWriter {
 	
+	
+	@Autowired
+	private XmlMapper xmlMapper;
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends GenerateAble> void write(File file, List<T> data) {
 			
 		try {
-			XmlMapper xmlMapper = new XmlMapper();
 			
 			if (data.get(0) instanceof Request) {	
 				//bad looking work around because otherwise xml will have elements like
@@ -37,8 +40,7 @@ public class XmlRaportWriter implements RaportWriter {
 			} else {				
 				xmlMapper.writeValue(file, data);			
 			}
-			
-			xmlMapper.writeValue(file, data);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

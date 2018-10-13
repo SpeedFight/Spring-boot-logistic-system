@@ -22,17 +22,13 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 @Component
 public class CsvRaportWriter implements RaportWriter {
 	
-//	@Autowired
-//	private CsvMapper csvMapper;
-	
-//	@Autowired
-//	private XmlMapper xmlMapper;
+	@Autowired
+	private CsvMapper csvMapper;
 
 	@Override
 	public <T extends GenerateAble> void write(File file, List<T> data) {
 		
 		try {
-			CsvMapper csvMapper = new CsvMapper();
 			CsvSchema schema = csvMapper.schemaFor(data.get(0).getClass()).withHeader();
 			ObjectWriter objectWriter = csvMapper.writer(schema);
 			objectWriter.writeValue(file, data);
