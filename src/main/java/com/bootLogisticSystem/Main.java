@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.logic.args.InputArgumentParser;
+import com.bootLogisticSystem.model.InputArgument;
 
 /**
  * This class main class of this program, that contain all logic.
@@ -24,10 +25,14 @@ public class Main {
 //	private DataParser requestCsvParser;
 
 	public void main(String[] args) {
+		
+		InputArgument inputArgument;
+		
+		
 		try {
 
 			System.out.println("parse args:");
-			new InputArgumentParser().parseArgs(args);
+			inputArgument = new InputArgumentParser().parseArgs(args);
 
 		} catch (InvalidParameterException e) {
 			/*
