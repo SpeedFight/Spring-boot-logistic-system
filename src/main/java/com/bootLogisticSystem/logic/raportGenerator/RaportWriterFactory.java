@@ -26,12 +26,12 @@ public class RaportWriterFactory {
 		
 		switch (raportType) {
 		
-		case A:
-		case B:
-		case C:
-		case D:
-		case G:
-		case H:
+		case A:	//"Ilość zamówień łącznie"
+		case B:	//"Ilość zamówień do klienta o wskazanym identyfikatorze"
+		case C:	//"Łączna kwota zamówień"
+		case D:	// "Łączna kwota zamówień do klienta o wskazanym identyfikatorze"
+		case G:	//"Średnia wartość zamówienia"
+		case H:	//"Średnia wartość zamówienia do klienta o wskazanym identyfikatorze"
 			return getSpecificReportTypeWriterForSimpleData(pathTofile);
 			
 		case E: //"Łączna kwota zamówień do klienta o wskazanym identyfikatorze" 
