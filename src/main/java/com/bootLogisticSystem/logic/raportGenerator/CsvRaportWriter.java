@@ -14,6 +14,11 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
+/**
+ * Class provide save report as csv file functionality.
+ * @author Karol Łukasiewicz
+ *
+ */
 @Component
 public class CsvRaportWriter implements RaportWriter {
 	

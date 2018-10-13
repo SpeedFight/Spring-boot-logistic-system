@@ -14,6 +14,11 @@ import com.bootLogisticSystem.entity.GenerateAble;
 import com.bootLogisticSystem.entity.Request;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
+/**
+ * Class provide save report as xml file functionality.
+ * @author Karol Łukasiewicz
+ *
+ */
 @Component
 public class XmlRaportWriter implements RaportWriter {
 	
@@ -21,9 +26,7 @@ public class XmlRaportWriter implements RaportWriter {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T extends GenerateAble> void write(File file, List<T> data) {
-		
-		
-		
+			
 		try {
 			XmlMapper xmlMapper = new XmlMapper();
 			
