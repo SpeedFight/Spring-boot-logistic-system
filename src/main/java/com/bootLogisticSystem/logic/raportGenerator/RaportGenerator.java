@@ -23,8 +23,7 @@ public class RaportGenerator {
 	public <T extends GenerateAble> void save(InputArgument inputArguments, List<T> data) throws SaveOutputFileException {
 		
 		boolean isAnyError = false;
-		try {		
-			
+		try {				
 			RaportWriter raportWriter = raportWriterFactory.getRaportWriter(
 					inputArguments.getOutputFile().getPath()
 					, inputArguments.getRaportType());

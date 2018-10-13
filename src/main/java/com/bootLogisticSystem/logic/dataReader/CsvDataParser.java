@@ -1,12 +1,9 @@
 package com.bootLogisticSystem.logic.dataReader;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.bootLogisticSystem.entity.GenerateAble;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -15,21 +12,24 @@ import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
-@Component
 public class CsvDataParser implements DataParser{
 	
-	@Autowired
 	private CsvMapper csvMapper;
 
+	public CsvDataParser(CsvMapper csvMapper) {
+		super();
+		this.csvMapper = csvMapper;
+	}
+
 	@Override
-	public <T extends GenerateAble> List<T> getRequests(InputStream document, T inputDataPojo)
+	public <T extends GenerateAble> List<T> parse(File fileToParse, T inputDataPojo)
 			throws JsonParseException, JsonMappingException, IOException {
 		
 		CsvSchema schema = CsvSchema.emptySchema().withHeader(); 
 		 MappingIterator<T> dataIterator = csvMapper
 				    .readerFor(inputDataPojo.getClass())
 				    .with(schema)
-				    .readValues(document);
+				    .readValues(fileToParse);
 		
 		List<T> requests = new ArrayList<>();
 		while (dataIterator.hasNext()) {

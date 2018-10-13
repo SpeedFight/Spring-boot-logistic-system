@@ -1,9 +1,15 @@
 package com.bootLogisticSystem;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.logic.args.InputArgumentParser;
+import com.bootLogisticSystem.logic.dataReader.DataReader;
+import com.bootLogisticSystem.logic.raportGenerator.RaportGenerator;
 import com.bootLogisticSystem.model.InputArgument;
 
 /**
@@ -17,6 +23,12 @@ public class Main {
 
 //	@Autowired
 //	private RequestRepository orderRepository;
+	
+	@Autowired
+	DataReader dataReader;
+
+	@Autowired
+	private RaportGenerator raportGenerator;
 
 	/**
 	 * Main program activity: <br>
@@ -36,7 +48,15 @@ public class Main {
 		InputArgument inputArgument;
 
 		try {
+			// 1)
 			inputArgument = new InputArgumentParser().parseArgs(args);
+			
+			// 2)
+			List<Request> parsedData = dataReader.parse(inputArgument, Request.class);
+			
+			
+			// 8)
+//			raportGenerator.save(inputArgument, data);
 
 		} catch (InvalidParameterException e) {
 			/*
