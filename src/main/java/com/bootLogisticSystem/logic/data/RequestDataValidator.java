@@ -1,6 +1,5 @@
 package com.bootLogisticSystem.logic.data;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,7 +8,6 @@ import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.model.ValidationError;

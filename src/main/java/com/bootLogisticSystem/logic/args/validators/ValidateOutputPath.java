@@ -11,7 +11,6 @@ import org.pmw.tinylog.Logger;
 import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.WrongFilePathExtension;
-import com.bootLogisticSystem.model.RaportType;
 import com.bootLogisticSystem.utils.Utils;
 
 public class ValidateOutputPath {

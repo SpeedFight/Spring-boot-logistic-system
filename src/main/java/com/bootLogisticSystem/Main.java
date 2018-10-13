@@ -1,12 +1,9 @@
 package com.bootLogisticSystem;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.logic.args.InputArgumentParser;
-import com.bootLogisticSystem.logic.dataReader.DataParser;
-import com.bootLogisticSystem.repository.RequestRepository;
 
 /**
  * This class main class of this program, that contain all logic.

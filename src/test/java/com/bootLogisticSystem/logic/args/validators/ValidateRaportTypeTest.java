@@ -1,6 +1,7 @@
 package com.bootLogisticSystem.logic.args.validators;
 
 import static org.junit.Assert.assertTrue;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;

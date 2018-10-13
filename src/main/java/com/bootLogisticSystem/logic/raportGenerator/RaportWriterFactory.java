@@ -1,6 +1,5 @@
 package com.bootLogisticSystem.logic.raportGenerator;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.bootLogisticSystem.exception.NoFileExtensionException;

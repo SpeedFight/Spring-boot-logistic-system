@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.util.List;
 
 import com.bootLogisticSystem.entity.GenerateAble;
-import com.bootLogisticSystem.entity.Request;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 

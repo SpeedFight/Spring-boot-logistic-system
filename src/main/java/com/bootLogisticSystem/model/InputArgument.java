@@ -3,8 +3,6 @@ package com.bootLogisticSystem.model;
 import java.io.File;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 /**
  * Class validate and keep data with info
  * where load and save file.

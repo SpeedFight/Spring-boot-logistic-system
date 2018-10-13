@@ -2,9 +2,6 @@ package com.bootLogisticSystem.dto;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-
 import com.bootLogisticSystem.entity.GenerateAble;
 import com.bootLogisticSystem.entity.Request;
 import com.fasterxml.jackson.annotation.JsonProperty;
