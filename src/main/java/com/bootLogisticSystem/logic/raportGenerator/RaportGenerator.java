@@ -42,8 +42,6 @@ public class RaportGenerator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+	
 	}
 }

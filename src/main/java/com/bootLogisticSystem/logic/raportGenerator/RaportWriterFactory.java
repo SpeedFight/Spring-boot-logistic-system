@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.NoValidRaportWriterFound;
 import com.bootLogisticSystem.exception.WrongFilePathExtension;
+import com.bootLogisticSystem.logic.raportGenerator.customOptions.RequestListRaportXmlCustomWriter;
 import com.bootLogisticSystem.model.RaportType;
 import com.bootLogisticSystem.utils.Utils;
 
@@ -18,16 +19,6 @@ import com.bootLogisticSystem.utils.Utils;
 @Component
 public class RaportWriterFactory {
 
-	private XmlRaportWriter xmlRaportWriter;
-	private CsvRaportWriter csvRaportWriter;
-
-	@Autowired
-	public RaportWriterFactory(XmlRaportWriter xmlRaportWriter, CsvRaportWriter csvRaportWriter) {
-		super();
-		this.xmlRaportWriter = xmlRaportWriter;
-		this.csvRaportWriter = csvRaportWriter;
-	}
-
 	public RaportWriter getRaportWriter(String pathTofile, RaportType raportType)
 			throws NoFileExtensionException, WrongFilePathExtension, NoValidRaportWriterFound {
 
@@ -35,8 +26,16 @@ public class RaportWriterFactory {
 		
 		switch (raportType) {
 		
-		case E:
-		case F:
+		case A:
+		case B:
+		case C:
+		case D:
+		case G:
+		case H:
+			return getSpecificReportTypeWriterForSimpleData(pathTofile);
+			
+		case E: //"Łączna kwota zamówień do klienta o wskazanym identyfikatorze" 
+		case F: //"Lista wszystkich zamówień"
 			return getSpecificReportTypeWriterForEF(pathTofile);
 
 		default:
@@ -44,14 +43,27 @@ public class RaportWriterFactory {
 		}
 	}
 	
-	private RaportWriter getSpecificReportTypeWriterForEF(String pathTofile) throws NoValidRaportWriterFound, NoFileExtensionException {
+	private RaportWriter getSpecificReportTypeWriterForSimpleData(String pathTofile) throws NoValidRaportWriterFound, NoFileExtensionException {
 		switch (Utils.getFileExtensionFromPath(pathTofile)) {
 		case "csv":
-			return csvRaportWriter;
+			return new CsvRaportWriter();
 		case "xml":
-			return xmlRaportWriter;
+			return new XmlRaportWriter();
 		default:
 			throw new NoValidRaportWriterFound("No writer for: " + pathTofile + " found.");
 		}
 	}
+	
+	
+	private RaportWriter getSpecificReportTypeWriterForEF(String pathTofile) throws NoValidRaportWriterFound, NoFileExtensionException {
+		switch (Utils.getFileExtensionFromPath(pathTofile)) {
+		case "csv":
+			return new RequestListRaportXmlCustomWriter();
+		case "xml":
+			return new RequestListRaportXmlCustomWriter();
+		default:
+			throw new NoValidRaportWriterFound("No writer for: " + pathTofile + " found.");
+		}
+	}
+	
 }
