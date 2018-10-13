@@ -17,21 +17,25 @@ public class Main {
 
 //	@Autowired
 //	private RequestRepository orderRepository;
-//
-//	@Autowired
-//	private DataParser requestXmlParser;
-//
-//	@Autowired
-//	private DataParser requestCsvParser;
 
+	/**
+	 * Main program activity: <br>
+	 * 1) Parse program agrs and keep all parameters in InputArgument class <br>
+	 * 2) Read and parse input files (only validate syntax in files)
+	 * 4) Validate input data (validate by rule defined in entity)
+	 * 5) Put input data to database
+	 * 6) Check if it is possible to generate selected report
+	 * 7) Generate selected report type from database
+	 * 8) Save report
+	 * 9) Fin
+	 * 
+	 * @param args Program input arguments
+	 */
 	public void main(String[] args) {
-		
-		InputArgument inputArgument;
-		
-		
-		try {
 
-			System.out.println("parse args:");
+		InputArgument inputArgument;
+
+		try {
 			inputArgument = new InputArgumentParser().parseArgs(args);
 
 		} catch (InvalidParameterException e) {
