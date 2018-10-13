@@ -17,6 +17,8 @@ import org.springframework.stereotype.Component;
 import com.bootLogisticSystem.entity.GenerateAble;
 import com.bootLogisticSystem.entity.Request;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
@@ -36,38 +38,10 @@ public class CsvRaportWriter implements RaportWriter {
 	private CsvMapper csvMapper;
 
 	@Override
-	public <T extends GenerateAble> void write(File file, List<T> data) {
-
-		try {
-			if (data.get(0) instanceof Request) {	
-				//set custom header for request class
-				csvMapper.addMixIn(data.get(0).getClass(), RaportCsvCustomHeader.class);
-			}		
-			
+	public <T extends GenerateAble> void write(File file, List<T> data) throws JsonGenerationException, JsonMappingException, IOException {	
 			CsvSchema schema = csvMapper.schemaFor(data.get(0).getClass()).withHeader();
 			ObjectWriter objectWriter = csvMapper.writer(schema);
 			objectWriter.writeValue(file, data);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
 	}
 }
 
-class RaportCsvCustomHeader {
-
-	@JsonProperty("Client_Id")
-	private String clientId;
-
-	@JsonProperty("Request_id")
-	private int requestId;
-	
-	@JsonProperty("Name")
-	private String name;
-	
-	@JsonProperty("Quantity")
-	private int quantity;
-	
-	@JsonProperty("Price")
-	private double price;
-	
-}
