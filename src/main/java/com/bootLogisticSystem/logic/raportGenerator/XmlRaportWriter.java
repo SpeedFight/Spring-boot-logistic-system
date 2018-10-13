@@ -17,11 +17,14 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
  * @author Karol Łukasiewicz
  *
  */
-@Component
 public class XmlRaportWriter implements RaportWriter {
 	
-	@Autowired
 	private XmlMapper xmlMapper;
+
+	public XmlRaportWriter(XmlMapper xmlMapper) {
+		super();
+		this.xmlMapper = xmlMapper;
+	}
 
 	@Override
 	public <T extends GenerateAble> void write(File file, List<T> data) throws JsonGenerationException, JsonMappingException, IOException {			

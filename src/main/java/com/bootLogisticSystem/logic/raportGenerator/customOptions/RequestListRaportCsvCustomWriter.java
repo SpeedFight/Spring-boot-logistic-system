@@ -16,12 +16,15 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
-@Component
 public class RequestListRaportCsvCustomWriter implements RaportWriter {
 
-	@Autowired
 	private CsvMapper csvMapper;
 	
+	public RequestListRaportCsvCustomWriter(CsvMapper csvMapper) {
+		super();
+		this.csvMapper = csvMapper;
+	}
+
 	@Override
 	public <T extends GenerateAble> void write(File file, List<T> data)
 			throws JsonGenerationException, JsonMappingException, IOException {

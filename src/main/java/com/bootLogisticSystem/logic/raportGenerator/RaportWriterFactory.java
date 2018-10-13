@@ -1,13 +1,17 @@
 package com.bootLogisticSystem.logic.raportGenerator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.NoValidRaportWriterFound;
 import com.bootLogisticSystem.exception.WrongFilePathExtension;
+import com.bootLogisticSystem.logic.raportGenerator.customOptions.RequestListRaportCsvCustomWriter;
 import com.bootLogisticSystem.logic.raportGenerator.customOptions.RequestListRaportXmlCustomWriter;
 import com.bootLogisticSystem.model.RaportType;
 import com.bootLogisticSystem.utils.Utils;
+import com.fasterxml.jackson.dataformat.csv.CsvMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 /**
  * Class provide selector factory to correct file writer.
@@ -17,6 +21,12 @@ import com.bootLogisticSystem.utils.Utils;
  */
 @Component
 public class RaportWriterFactory {
+	
+	@Autowired
+	private XmlMapper xmlMapper;
+	
+	@Autowired
+	private CsvMapper csvMapper;
 
 	public RaportWriter getRaportWriter(String pathTofile, RaportType raportType)
 			throws NoFileExtensionException, WrongFilePathExtension, NoValidRaportWriterFound {
@@ -45,9 +55,9 @@ public class RaportWriterFactory {
 	private RaportWriter getSpecificReportTypeWriterForSimpleData(String pathTofile) throws NoValidRaportWriterFound, NoFileExtensionException {
 		switch (Utils.getFileExtensionFromPath(pathTofile)) {
 		case "csv":
-			return new CsvRaportWriter();
+			return new CsvRaportWriter(csvMapper);
 		case "xml":
-			return new XmlRaportWriter();
+			return new XmlRaportWriter(xmlMapper);
 		default:
 			throw new NoValidRaportWriterFound("No writer for: " + pathTofile + " found.");
 		}
@@ -57,9 +67,9 @@ public class RaportWriterFactory {
 	private RaportWriter getSpecificReportTypeWriterForEF(String pathTofile) throws NoValidRaportWriterFound, NoFileExtensionException {
 		switch (Utils.getFileExtensionFromPath(pathTofile)) {
 		case "csv":
-			return new RequestListRaportXmlCustomWriter();
+			return new RequestListRaportCsvCustomWriter(csvMapper);
 		case "xml":
-			return new RequestListRaportXmlCustomWriter();
+			return new RequestListRaportXmlCustomWriter(xmlMapper);
 		default:
 			throw new NoValidRaportWriterFound("No writer for: " + pathTofile + " found.");
 		}

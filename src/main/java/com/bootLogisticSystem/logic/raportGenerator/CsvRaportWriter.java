@@ -20,11 +20,14 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
  * @author Karol Łukasiewicz
  *
  */
-@Component
 public class CsvRaportWriter implements RaportWriter {
 
-	@Autowired
 	private CsvMapper csvMapper;
+
+	public CsvRaportWriter(CsvMapper csvMapper) {
+		super();
+		this.csvMapper = csvMapper;
+	}
 
 	@Override
 	public <T extends GenerateAble> void write(File file, List<T> data) throws JsonGenerationException, JsonMappingException, IOException {	

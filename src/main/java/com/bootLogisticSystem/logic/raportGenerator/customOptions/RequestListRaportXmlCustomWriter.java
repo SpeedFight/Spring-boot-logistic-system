@@ -15,11 +15,14 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-@Component
 public class RequestListRaportXmlCustomWriter implements RaportWriter {
 	
-	@Autowired
 	private XmlMapper xmlMapper;
+
+	public RequestListRaportXmlCustomWriter(XmlMapper xmlMapper) {
+		super();
+		this.xmlMapper = xmlMapper;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
