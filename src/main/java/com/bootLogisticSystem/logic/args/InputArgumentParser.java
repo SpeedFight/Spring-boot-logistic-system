@@ -42,7 +42,6 @@ public class InputArgumentParser {
 
 		// basic parse and validation provide by apache common CLI
 		try {
-			CommandLineParser parser = new DefaultParser();
 			commandLineOptional = Optional.of(new DefaultParser().parse(options, args, false));
 		} catch (ParseException e) {
 			System.out.println(e.getMessage());
