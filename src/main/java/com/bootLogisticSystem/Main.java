@@ -12,7 +12,9 @@ import com.bootLogisticSystem.logic.data.DataValidator;
 import com.bootLogisticSystem.logic.data.DataValidatorFactory;
 import com.bootLogisticSystem.logic.dataReader.DataReader;
 import com.bootLogisticSystem.logic.raportGenerator.RaportFileGenerator;
+import com.bootLogisticSystem.logic.raportGenerator.RaportGenerator;
 import com.bootLogisticSystem.model.InputArgument;
+import com.bootLogisticSystem.model.ReasultsContainer;
 import com.bootLogisticSystem.model.ValidationError;
 import com.bootLogisticSystem.repository.RequestRepository;
 
@@ -35,6 +37,9 @@ public class Main {
 	
 	@Autowired
 	private RequestRepository orderRepository;
+	
+	@Autowired
+	private RaportGenerator raportGenerator;
 
 	@Autowired
 	private RaportFileGenerator raportFileGenerator;
@@ -69,8 +74,11 @@ public class Main {
 			//4
 			orderRepository.saveAll(validatedData);
 			
+			//5
+			ReasultsContainer reasult = raportGenerator.generateSingleValueRaport(inputArgument);
+			
 			// 6)
-//			raportGenerator.save(inputArgument, data);
+			raportGenerator.save(inputArgument, data);
 
 		} catch (InvalidParameterException e) {
 			/*
