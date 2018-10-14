@@ -1,4 +1,4 @@
-package com.bootLogisticSystem.logic.raportGenerator;
+package com.bootLogisticSystem.logic.raportGenerator.reportFile;
 
 import java.io.File;
 import java.io.IOException;

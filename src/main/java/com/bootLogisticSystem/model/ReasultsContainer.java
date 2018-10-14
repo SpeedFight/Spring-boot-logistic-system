@@ -7,30 +7,23 @@ import com.bootLogisticSystem.model.raportTemplates.OneValueReport;
 
 public class ReasultsContainer{
 	
-	public Class<?> dataClass;
-	private Object data;
+	private OneValueReport oneValueReport;
 	
-    public <V> V get(Class<V> typeClass) {
-        if(dataClass.equals(typeClass)) {
-            return typeClass.cast(data);
-        }
-        return null;
-    }
-    
-    public <V> V set(V obj, Class<V> typeClass) {
-        if(dataClass.equals(typeClass)) {
-            V toreturn = typeClass.cast(data);
-            data = obj;
-            return toreturn;
-        }
-        return null;
-    }
+	private List<Request> requestsReport;
 
-	public void set(OneValueReport report, Class<?> typeClass) {
-		set(report, typeClass);		
+	public ReasultsContainer(OneValueReport oneValueReport) {
+		this.oneValueReport = oneValueReport;			
+	}
+	
+	public ReasultsContainer(List<Request> requestsReport) {
+		this.requestsReport = requestsReport;			
 	}
 
-	public void set(List<Request> reportList, Class<?> typeClass) {
-		set(reportList, typeClass);			
+	public OneValueReport getOneValueReport() {
+		return oneValueReport;
+	}
+
+	public List<Request> getRequestsReport() {
+		return requestsReport;
 	}
 }

@@ -78,7 +78,7 @@ public class Main {
 			ReasultsContainer reasult = raportGenerator.generateRaport(inputArgument);
 			
 			// 6)
-			raportGenerator.save(inputArgument, data);
+//			raportFileGenerator.save(inputArgument, data);
 
 		} catch (InvalidParameterException e) {
 			/*

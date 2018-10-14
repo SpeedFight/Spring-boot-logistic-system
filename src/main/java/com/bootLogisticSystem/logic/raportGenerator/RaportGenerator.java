@@ -1,19 +1,21 @@
 package com.bootLogisticSystem.logic.raportGenerator;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.exception.NoValidRaportDataGeneratorFoundException;
-import com.bootLogisticSystem.logic.raportGenerator.raportData.ListRaportGenerator;
 import com.bootLogisticSystem.logic.raportGenerator.raportData.OrdersList;
-import com.bootLogisticSystem.logic.raportGenerator.raportData.SingleValueRaportGenerator;
 import com.bootLogisticSystem.logic.raportGenerator.raportData.SumOfTotalOrderPrice;
 import com.bootLogisticSystem.logic.raportGenerator.raportData.TotalAverageOrderPrice;
 import com.bootLogisticSystem.logic.raportGenerator.raportData.TotalOrderCount;
 import com.bootLogisticSystem.model.InputArgument;
 import com.bootLogisticSystem.model.RaportType;
 import com.bootLogisticSystem.model.ReasultsContainer;
+import com.bootLogisticSystem.model.raportTemplates.OneValueReport;
 import com.bootLogisticSystem.repository.RequestRepository;
 
 @Component
@@ -50,32 +52,32 @@ public class RaportGenerator {
 			}
 		}
 		
-		ReasultsContainer reasult = new ReasultsContainer();
+		ReasultsContainer reasult;
 
 		switch (selectedRaportType) {
 		case A:
-			reasult.set(totalOrderCount.generate(), SingleValueRaportGenerator.class);
+			reasult = new ReasultsContainer(totalOrderCount.generate());
 			break;
 		case B:
-			reasult.set(totalOrderCount.generateByClientId(inputArgument.getClientId()), SingleValueRaportGenerator.class);
+			reasult = new ReasultsContainer(totalOrderCount.generateByClientId(inputArgument.getClientId()));
 			break;
 		case C:
-			reasult.set(sumOfTotalOrderPrice.generate(), SingleValueRaportGenerator.class);
+			reasult = new ReasultsContainer(sumOfTotalOrderPrice.generate());
 			break;
 		case D:
-			reasult.set(sumOfTotalOrderPrice.generateByClientId(inputArgument.getClientId()), SingleValueRaportGenerator.class);
+			reasult = new ReasultsContainer(sumOfTotalOrderPrice.generateByClientId(inputArgument.getClientId()));
 			break;
 		case E:
-			reasult.set(ordersList.generate(), ListRaportGenerator.class);
+			reasult = new ReasultsContainer(ordersList.generate());
 			break;
 		case F:
-			reasult.set(ordersList.generateByClientId(inputArgument.getClientId()), ListRaportGenerator.class);
+			reasult = new ReasultsContainer(ordersList.generateByClientId(inputArgument.getClientId()));
 			break;
 		case G:
-			reasult.set(totalAverageOrderPrice.generate(), SingleValueRaportGenerator.class);
+			reasult = new ReasultsContainer(totalAverageOrderPrice.generate());
 			break;
 		case H:
-			reasult.set(totalAverageOrderPrice.generateByClientId(inputArgument.getClientId()), SingleValueRaportGenerator.class);
+			reasult = new ReasultsContainer(totalAverageOrderPrice.generateByClientId(inputArgument.getClientId()));
 			break;
 		default:
 			throw new NoValidRaportDataGeneratorFoundException(
