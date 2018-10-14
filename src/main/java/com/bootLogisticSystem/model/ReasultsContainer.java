@@ -5,18 +5,24 @@ import java.util.List;
 import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.model.raportTemplates.OneValueReport;
 
-public class ReasultsContainer{
-	
+/**
+ * Class provide to contain only one result value;
+ * 
+ * @author Karol Łukasiewicz
+ *
+ */
+public class ReasultsContainer {
+
 	private OneValueReport oneValueReport;
-	
+
 	private List<Request> requestsReport;
 
 	public ReasultsContainer(OneValueReport oneValueReport) {
-		this.oneValueReport = oneValueReport;			
+		this.oneValueReport = oneValueReport;
 	}
-	
+
 	public ReasultsContainer(List<Request> requestsReport) {
-		this.requestsReport = requestsReport;			
+		this.requestsReport = requestsReport;
 	}
 
 	public OneValueReport getOneValueReport() {
