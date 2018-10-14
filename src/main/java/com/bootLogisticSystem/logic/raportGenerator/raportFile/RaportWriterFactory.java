@@ -1,4 +1,4 @@
-package com.bootLogisticSystem.logic.raportGenerator.RaportFile;
+package com.bootLogisticSystem.logic.raportGenerator.raportFile;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

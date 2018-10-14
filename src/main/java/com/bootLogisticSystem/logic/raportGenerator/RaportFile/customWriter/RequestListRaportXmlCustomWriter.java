@@ -7,7 +7,7 @@ import java.util.List;
 import com.bootLogisticSystem.dto.RequestDtoJacksonXml;
 import com.bootLogisticSystem.entity.GenerateAble;
 import com.bootLogisticSystem.entity.Request;
-import com.bootLogisticSystem.logic.raportGenerator.RaportFile.RaportWriter;
+import com.bootLogisticSystem.logic.raportGenerator.raportFile.RaportWriter;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;

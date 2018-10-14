@@ -12,8 +12,8 @@ import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.NoValidRaportWriterFound;
 import com.bootLogisticSystem.exception.SaveOutputFileException;
 import com.bootLogisticSystem.exception.WrongFilePathExtension;
-import com.bootLogisticSystem.logic.raportGenerator.RaportFile.RaportWriter;
-import com.bootLogisticSystem.logic.raportGenerator.RaportFile.RaportWriterFactory;
+import com.bootLogisticSystem.logic.raportGenerator.raportFile.RaportWriter;
+import com.bootLogisticSystem.logic.raportGenerator.raportFile.RaportWriterFactory;
 import com.bootLogisticSystem.model.InputArgument;
 
 @Component
