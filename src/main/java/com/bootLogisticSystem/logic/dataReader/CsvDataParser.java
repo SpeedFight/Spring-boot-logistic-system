@@ -12,10 +12,19 @@ import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
+/**
+ * Parse csv file to obtain specific data.
+ * @author Karol Łukasiewicz
+ *
+ */
 public class CsvDataParser implements DataParser{
 	
 	private CsvMapper csvMapper;
 
+	/**
+	 * Constructor
+	 * @param csvMapper
+	 */
 	public CsvDataParser(CsvMapper csvMapper) {
 		super();
 		this.csvMapper = csvMapper;

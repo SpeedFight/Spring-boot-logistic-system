@@ -14,10 +14,19 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
+/**
+ * Parse xml file to obtain specific data.
+ * @author Karol Łukasiewicz
+ *
+ */
 public class XmlDataParser implements DataParser {
 
 	private XmlMapper xmlMapper;
 	
+	/**
+	 * Constructor
+	 * @param xmlMapper
+	 */
 	public XmlDataParser(XmlMapper xmlMapper) {
 		super();
 		this.xmlMapper = xmlMapper;
