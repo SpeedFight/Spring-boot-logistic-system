@@ -14,8 +14,6 @@ import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.WrongFilePathExtension;
 import com.bootLogisticSystem.utils.Utils;
 
-import jdk.internal.jline.internal.Log;
-
 public class ValidateInputPaths {
 
 	public ValidateInputPaths() {

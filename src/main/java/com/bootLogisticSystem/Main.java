@@ -33,13 +33,13 @@ public class Main {
 	/**
 	 * Main program activity: <br>
 	 * 1) Parse program agrs and keep all parameters in InputArgument class <br>
-	 * 2) Read and parse input files (only validate syntax in files)
-	 * 4) Validate input data (validate by rule defined in entity)
-	 * 5) Put input data to database
-	 * 6) Check if it is possible to generate selected report
-	 * 7) Generate selected report type from database
-	 * 8) Save report
-	 * 9) Fin
+	 *  	-	Read and parse input files (only validate syntax in files)
+	 * 2) Validate input data (validate by rule defined in entity)
+	 * 3) Put input data to database
+	 * 4) Check if it is possible to generate selected report
+	 * 5) Generate selected report type from database
+	 * 6) Save report
+	 * 7) Fin
 	 * 
 	 * @param args Program input arguments
 	 */
@@ -56,7 +56,7 @@ public class Main {
 			
 			
 			
-			// 8)
+			// 6)
 //			raportGenerator.save(inputArgument, data);
 
 		} catch (InvalidParameterException e) {
