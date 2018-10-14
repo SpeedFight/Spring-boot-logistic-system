@@ -1,4 +1,4 @@
-package com.bootLogisticSystem.logic.raportGenerator;
+package com.bootLogisticSystem.logic.raportGenerator.RaportFile;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.NoValidRaportWriterFound;
 import com.bootLogisticSystem.exception.WrongFilePathExtension;
-import com.bootLogisticSystem.logic.raportGenerator.customWriters.RequestListRaportCsvCustomWriter;
-import com.bootLogisticSystem.logic.raportGenerator.customWriters.RequestListRaportXmlCustomWriter;
+import com.bootLogisticSystem.logic.raportGenerator.RaportFile.customWriter.RequestListRaportCsvCustomWriter;
+import com.bootLogisticSystem.logic.raportGenerator.RaportFile.customWriter.RequestListRaportXmlCustomWriter;
 import com.bootLogisticSystem.model.RaportType;
 import com.bootLogisticSystem.utils.Utils;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;

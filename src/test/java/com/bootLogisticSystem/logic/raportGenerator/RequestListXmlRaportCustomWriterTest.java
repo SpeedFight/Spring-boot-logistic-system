@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.bootLogisticSystem.logic.args.validators.ValidateInputPaths;
 import com.bootLogisticSystem.logic.mapper.MapperGenerator;
-import com.bootLogisticSystem.logic.raportGenerator.customWriters.RequestListRaportXmlCustomWriter;
+import com.bootLogisticSystem.logic.raportGenerator.RaportFile.customWriter.RequestListRaportXmlCustomWriter;
 import com.bootLogisticSystem.utils.RandomRequest;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;

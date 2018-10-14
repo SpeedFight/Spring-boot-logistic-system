@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.bootLogisticSystem.logic.mapper.MapperGenerator;
-import com.bootLogisticSystem.logic.raportGenerator.customWriters.RequestListRaportCsvCustomWriter;
+import com.bootLogisticSystem.logic.raportGenerator.RaportFile.customWriter.RequestListRaportCsvCustomWriter;
 import com.bootLogisticSystem.utils.RandomRequest;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;

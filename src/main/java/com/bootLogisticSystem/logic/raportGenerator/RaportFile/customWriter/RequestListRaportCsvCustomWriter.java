@@ -1,11 +1,11 @@
-package com.bootLogisticSystem.logic.raportGenerator.customWriters;
+package com.bootLogisticSystem.logic.raportGenerator.RaportFile.customWriter;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 import com.bootLogisticSystem.entity.GenerateAble;
-import com.bootLogisticSystem.logic.raportGenerator.RaportWriter;
+import com.bootLogisticSystem.logic.raportGenerator.RaportFile.RaportWriter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;

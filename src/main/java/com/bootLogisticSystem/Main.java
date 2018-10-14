@@ -11,7 +11,7 @@ import com.bootLogisticSystem.logic.args.InputArgumentParser;
 import com.bootLogisticSystem.logic.data.DataValidator;
 import com.bootLogisticSystem.logic.data.DataValidatorFactory;
 import com.bootLogisticSystem.logic.dataReader.DataReader;
-import com.bootLogisticSystem.logic.raportGenerator.RaportFileGenerator;
+import com.bootLogisticSystem.logic.raportGenerator.RaportFile.RaportFileGenerator;
 import com.bootLogisticSystem.model.InputArgument;
 import com.bootLogisticSystem.model.ValidationError;
 import com.bootLogisticSystem.repository.RequestRepository;
