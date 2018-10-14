@@ -10,6 +10,9 @@ import java.util.List;
 import org.pmw.tinylog.Logger;
 
 import com.bootLogisticSystem.exception.InvalidParameterException;
+import com.bootLogisticSystem.exception.NoFileExtensionException;
+import com.bootLogisticSystem.exception.WrongFilePathExtension;
+import com.bootLogisticSystem.utils.Utils;
 
 import jdk.internal.jline.internal.Log;
 
@@ -25,17 +28,26 @@ public class ValidateInputPaths {
 		for (String inputPath : inputPaths) {
 
 			try {
-				checkFilePath(inputPath);
-				validFiles.add(new File(inputPath));
-			} catch (InvalidParameterException e) {
+				if (checkFilePath(inputPath)) {
+					validFiles.add(new File(inputPath));
+				}
+
+			} catch (InvalidParameterException | NoFileExtensionException | WrongFilePathExtension e) {
 				Logger.warn(e.getMessage());
+				Logger.warn("File: " + inputPath + " is removed from input files list, and will be not use.");
 			}
 		}
 
-		return null;
+		if (validFiles.size() > 0) {
+			return validFiles;
+		} else {
+			throw new InvalidParameterException("No valid input files");
+		}
+
 	}
 
-	private void checkFilePath(String inputPath) throws InvalidParameterException {
+	private boolean checkFilePath(String inputPath)
+			throws InvalidParameterException, NoFileExtensionException, WrongFilePathExtension {
 		Path path = Paths.get(inputPath);
 
 		if (!Files.exists(path) && !Files.isRegularFile(path)) {
@@ -44,5 +56,9 @@ public class ValidateInputPaths {
 		if (!Files.isReadable(path)) {
 			throw new InvalidParameterException("Path to input file: " + inputPath + " is unreadable.");
 		}
+
+		Utils.isFileExtensionSupported(inputPath);
+
+		return true;
 	}
 }
