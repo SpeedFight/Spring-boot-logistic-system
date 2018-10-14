@@ -75,7 +75,7 @@ public class Main {
 			orderRepository.saveAll(validatedData);
 			
 			//5
-			ReasultsContainer reasult = raportGenerator.generateSingleValueRaport(inputArgument);
+			ReasultsContainer reasult = raportGenerator.generateRaport(inputArgument);
 			
 			// 6)
 			raportGenerator.save(inputArgument, data);

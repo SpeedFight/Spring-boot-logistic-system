@@ -34,7 +34,7 @@ public class RaportGenerator {
 	@Autowired
 	private OrdersList ordersList;
 
-	public ReasultsContainer generateSingleValueRaport(InputArgument inputArgument)
+	public ReasultsContainer generateRaport(InputArgument inputArgument)
 			throws NoValidRaportDataGeneratorFoundException, InvalidParameterException {
 
 		RaportType selectedRaportType = inputArgument.getRaportType();
