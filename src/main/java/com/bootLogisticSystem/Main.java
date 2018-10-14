@@ -8,9 +8,13 @@ import org.springframework.stereotype.Component;
 import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.logic.args.InputArgumentParser;
+import com.bootLogisticSystem.logic.data.DataValidator;
+import com.bootLogisticSystem.logic.data.DataValidatorFactory;
 import com.bootLogisticSystem.logic.dataReader.DataReader;
 import com.bootLogisticSystem.logic.raportGenerator.RaportGenerator;
 import com.bootLogisticSystem.model.InputArgument;
+import com.bootLogisticSystem.model.ValidationError;
+import com.bootLogisticSystem.repository.RequestRepository;
 
 /**
  * This class main class of this program, that contain all logic.
@@ -21,11 +25,16 @@ import com.bootLogisticSystem.model.InputArgument;
 @Component
 public class Main {
 
-//	@Autowired
-//	private RequestRepository orderRepository;
+
 	
 	@Autowired
-	DataReader dataReader;
+	private DataReader dataReader;
+	
+	@Autowired
+	private ValidationError validationError;
+	
+	@Autowired
+	private RequestRepository orderRepository;
 
 	@Autowired
 	private RaportGenerator raportGenerator;
@@ -33,13 +42,11 @@ public class Main {
 	/**
 	 * Main program activity: <br>
 	 * 1) Parse program agrs and keep all parameters in InputArgument class <br>
-	 *  	-	Read and parse input files (only validate syntax in files)
-	 * 2) Validate input data (validate by rule defined in entity)
-	 * 3) Put input data to database
-	 * 4) Check if it is possible to generate selected report
-	 * 5) Generate selected report type from database
-	 * 6) Save report
-	 * 7) Fin
+	 * 2)	Read and parse input files (only validate syntax in files) <br>
+	 * 3) Validate input data (validate by rule defined in entity) <br>
+	 * 4) Put input data to database <br>
+	 * ) Generate selected report type from database <br>
+	 * ) Save report <br>
 	 * 
 	 * @param args Program input arguments
 	 */
@@ -54,7 +61,12 @@ public class Main {
 			// 2)
 			List<Request> parsedData = dataReader.parse(inputArgument, Request.class);
 			
+			//3
+			DataValidator dataValidator = DataValidatorFactory.getDataValidator(Request.class, validationError);
+			List<Request> validatedData = dataValidator.validate(parsedData);
 			
+			//4
+			orderRepository.saveAll(validatedData);
 			
 			// 6)
 //			raportGenerator.save(inputArgument, data);

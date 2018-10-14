@@ -7,7 +7,7 @@ import com.bootLogisticSystem.model.ValidationError;
 
 public class DataValidatorFactory {
 
-	public <T extends GenerateAble> DataValidator getDataValidator(Class<T> pojo, ValidationError validationError) throws NoValidDataValidatorFound{
+	public static <T extends GenerateAble> DataValidator getDataValidator(Class<T> pojo, ValidationError validationError) throws NoValidDataValidatorFound{
 		
 		if (pojo.isInstance(Request.class)) {
 			return new RequestDataValidator(validationError);
