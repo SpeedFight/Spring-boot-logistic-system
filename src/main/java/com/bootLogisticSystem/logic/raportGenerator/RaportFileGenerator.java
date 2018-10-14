@@ -6,6 +6,7 @@ import org.pmw.tinylog.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.NoValidRaportWriterFound;
 import com.bootLogisticSystem.exception.SaveOutputFileException;
@@ -21,20 +22,42 @@ public class RaportFileGenerator {
 	@Autowired
 	private RaportWriterFactory raportWriterFactory;
 
+	private void printData(InputArgument inputArguments, ReasultsContainer reasult) throws SaveOutputFileException {
+		if (reasult.getOneValueReport() == null && reasult.getRequestsReport() == null) {
+			throw new SaveOutputFileException("No data to print");
+		}
+
+		Logger.info("Output reasults for:  " + inputArguments.getRaportType().getDescription());
+
+		if (reasult.getOneValueReport() != null) {
+			Logger.info(
+					reasult.getOneValueReport().getDescription() + "\n is: " + reasult.getOneValueReport().getValue());
+		} else {
+			for (Request oneRequest : reasult.getRequestsReport()) {
+				Logger.info(oneRequest);
+			}
+		}
+	}
+
 	public void save(InputArgument inputArguments, ReasultsContainer reasult) throws SaveOutputFileException {
+
+		if (inputArguments.getOutputFile() == null) {
+			printData(inputArguments, reasult);
+		}
+
 		boolean isAnyError = false;
 		try {
-			
-			if(reasult.getOneValueReport() == null && reasult.getRequestsReport() == null) {
+
+			if (reasult.getOneValueReport() == null && reasult.getRequestsReport() == null) {
 				throw new SaveOutputFileException("No data to save");
 			}
-		
+
 			RaportWriter raportWriter = raportWriterFactory.getRaportWriter(inputArguments.getOutputFile().getPath(),
 					inputArguments.getRaportType());
 
-			if(reasult.getOneValueReport() != null) {
+			if (reasult.getOneValueReport() != null) {
 				raportWriter.write(inputArguments.getOutputFile(), reasult.getOneValueReport());
-			} else{
+			} else {
 				raportWriter.writeList(inputArguments.getOutputFile(), reasult.getRequestsReport());
 			}
 

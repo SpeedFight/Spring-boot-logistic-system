@@ -42,7 +42,7 @@ public class BootLogisticSystemApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Logger.info("Program start work");
 
-//		main.main(args);
+		main.main(args);
 
 		Logger.info("Program end work");
 	}
