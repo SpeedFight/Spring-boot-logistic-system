@@ -1,4 +1,4 @@
-package com.bootLogisticSystem.logic.raportGenerator.RaportFile;
+package com.bootLogisticSystem.logic.raportGenerator;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,6 +12,8 @@ import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.NoValidRaportWriterFound;
 import com.bootLogisticSystem.exception.SaveOutputFileException;
 import com.bootLogisticSystem.exception.WrongFilePathExtension;
+import com.bootLogisticSystem.logic.raportGenerator.RaportFile.RaportWriter;
+import com.bootLogisticSystem.logic.raportGenerator.RaportFile.RaportWriterFactory;
 import com.bootLogisticSystem.model.InputArgument;
 
 @Component
