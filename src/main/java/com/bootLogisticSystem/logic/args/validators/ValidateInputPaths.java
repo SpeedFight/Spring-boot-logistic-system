@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.pmw.tinylog.Logger;
+
 import com.bootLogisticSystem.exception.InvalidParameterException;
 
 import jdk.internal.jline.internal.Log;
@@ -26,7 +28,7 @@ public class ValidateInputPaths {
 				checkFilePath(inputPath);
 				validFiles.add(new File(inputPath));
 			} catch (InvalidParameterException e) {
-				Log.warn(e.getMessage());
+				Logger.warn(e.getMessage());
 			}
 		}
 
