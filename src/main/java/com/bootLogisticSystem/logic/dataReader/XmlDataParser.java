@@ -24,7 +24,7 @@ public class XmlDataParser implements DataParser {
 	}
 
 	@Override
-	public <T extends GenerateAble> List<T> parse(File fileToParse, T inputDataPojo)
+	public <T extends GenerateAble> List<T> parse(File fileToParse, Class<T> inputDataPojo)
 			throws JsonParseException, JsonMappingException, IOException {
 		
 		return xmlMapper.readValue(fileToParse,
