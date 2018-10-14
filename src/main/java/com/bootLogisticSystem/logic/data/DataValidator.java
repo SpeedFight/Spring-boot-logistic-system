@@ -2,7 +2,9 @@ package com.bootLogisticSystem.logic.data;
 
 import java.util.List;
 
-public interface DataValidator<T> {
+import com.bootLogisticSystem.entity.GenerateAble;
 
-	List<T> validate(List<T> listToValidate);
+public interface DataValidator {
+
+	<T extends GenerateAble> List<T> validate(List<T> listToValidate);
 }

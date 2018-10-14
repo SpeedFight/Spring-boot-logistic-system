@@ -7,20 +7,18 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
+import com.bootLogisticSystem.entity.GenerateAble;
 import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.model.ValidationError;
 
-public class RequestDataValidator implements DataValidator<Request>{
+public class RequestDataValidator implements DataValidator{
 	
 	private final String formatString = "Error in client id:'%s' request id:'%s'. Wrong value:'%s' = '%s' because: '%s'";
 	private final List<String> errors;
 	ValidatorFactory validatorFactory;
 	Validator validator;
 	
-	@Autowired
-	private RequestDataValidator(ValidationError validationError) {
+	public RequestDataValidator(ValidationError validationError) {
 		errors = validationError.getErrors();
 		validatorFactory = Validation.buildDefaultValidatorFactory();
 		validator = validatorFactory.getValidator();	
@@ -32,13 +30,12 @@ public class RequestDataValidator implements DataValidator<Request>{
 	 * @return list that contain only correct request
 	 */
 	@Override
-	public List<Request> validate(List<Request> listToValidate) {	
-		
+	public <T extends GenerateAble> List<T> validate(List<T> listToValidate) {
 		//validate every element in list
 		//in one time:
 		//	1) filter request with no error
 		//	2) fill errors list with messages that describe why validation failed
-		List<Request> validatedList = listToValidate.parallelStream().filter(request -> {
+		List<T> validatedList = listToValidate.parallelStream().filter(request -> {
 			errors.addAll(validator.validate(request).stream()
 				.map(constraintViolation -> String.format(formatString, 
 				((Request)constraintViolation.getRootBean()).getClientId(), 
