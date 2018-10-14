@@ -64,6 +64,7 @@ public class Main {
 			//3
 			DataValidator dataValidator = DataValidatorFactory.getDataValidator(Request.class, validationError);
 			List<Request> validatedData = dataValidator.validate(parsedData);
+			validationError.showErrors();
 			
 			//4
 			orderRepository.saveAll(validatedData);
