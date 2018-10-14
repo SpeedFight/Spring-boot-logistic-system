@@ -39,4 +39,12 @@ public class InputArgument {
 	public String getClientId() {
 		return clientId;
 	}
+	
+	public boolean isClientIdSelected() {
+		if(clientId != null && !clientId.contentEquals("")) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

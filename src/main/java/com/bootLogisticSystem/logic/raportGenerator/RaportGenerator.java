@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.bootLogisticSystem.entity.GenerateAble;
+import com.bootLogisticSystem.model.InputArgument;
 import com.bootLogisticSystem.model.RaportType;
 import com.bootLogisticSystem.repository.RequestRepository;
 
@@ -15,9 +16,15 @@ public class RaportGenerator {
 	@Autowired
 	private RequestRepository orderRepository;
 	
-	public <T extends GenerateAble> List<T> generate(RaportType raportType){
+	public <T extends GenerateAble> List<T> generate(InputArgument inputArgument){	
 		
-		switch (raportType) {
+		RaportType selectedRaportType = inputArgument.getRaportType();
+		
+		if(selectedRaportType.isRequireClientId() && inputArgument.isClientIdSelected()) {
+			orderRepository.existsByRequestId(inputArgument.getClientId());
+		}
+		
+		switch (selectedRaportType) {
 		case A:		
 			break;
 		case B:
