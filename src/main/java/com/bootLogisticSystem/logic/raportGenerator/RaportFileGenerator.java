@@ -15,7 +15,7 @@ import com.bootLogisticSystem.exception.WrongFilePathExtension;
 import com.bootLogisticSystem.model.InputArgument;
 
 @Component
-public class RaportGenerator {
+public class RaportFileGenerator {
 	
 	@Autowired
 	private RaportWriterFactory raportWriterFactory;
