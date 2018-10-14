@@ -66,19 +66,19 @@ public class Main {
 			// 2)
 			List<Request> parsedData = dataReader.parse(inputArgument, Request.class);
 			
-			//3
+			// 3)
 			DataValidator dataValidator = DataValidatorFactory.getDataValidator(Request.class, validationError);
 			List<Request> validatedData = dataValidator.validate(parsedData);
 			validationError.showErrors();
 			
-			//4
+			// 4)
 			orderRepository.saveAll(validatedData);
 			
-			//5
+			// 5)
 			ReasultsContainer reasult = raportGenerator.generateRaport(inputArgument);
 			
 			// 6)
-//			raportFileGenerator.save(inputArgument, data);
+			raportFileGenerator.save(inputArgument, reasult);
 
 		} catch (InvalidParameterException e) {
 			/*

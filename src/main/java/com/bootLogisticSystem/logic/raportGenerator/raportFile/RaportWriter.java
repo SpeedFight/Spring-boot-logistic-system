@@ -25,5 +25,15 @@ public interface RaportWriter {
 	 * @throws JsonMappingException 
 	 * @throws JsonGenerationException 
 	 */
-	<T extends GenerateAble> void write(File file, List<T> data) throws JsonGenerationException, JsonMappingException, IOException;
+	<T extends GenerateAble> void writeList(File file, List<T> data) throws JsonGenerationException, JsonMappingException, IOException;
+	
+	/**
+	 * Save input single data to file.
+	 * @param file File to save.
+	 * @param data Input single data input.
+	 * @throws IOException 
+	 * @throws JsonMappingException 
+	 * @throws JsonGenerationException 
+	 */
+	<T extends GenerateAble> void write(File file, T data) throws JsonGenerationException, JsonMappingException, IOException;
 }

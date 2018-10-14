@@ -31,7 +31,7 @@ public class XmlRaportWriterTest {
 	
 	@Test
 	public void saveRaport() throws JsonGenerationException, JsonMappingException, IOException {
-		xmlRaportWriter.write(
+		xmlRaportWriter.writeList(
 				new File("src/test/testResources/testOutputFolder/out.xml"), 
 				RandomRequest.generate(100));
 		

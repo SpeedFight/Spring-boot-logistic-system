@@ -1,14 +1,11 @@
 package com.bootLogisticSystem.logic.raportGenerator;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.pmw.tinylog.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.bootLogisticSystem.entity.GenerateAble;
-import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.NoValidRaportWriterFound;
 import com.bootLogisticSystem.exception.SaveOutputFileException;
@@ -24,15 +21,22 @@ public class RaportFileGenerator {
 	@Autowired
 	private RaportWriterFactory raportWriterFactory;
 
-	public <T extends GenerateAble> void save(InputArgument inputArguments, List<T> data)
-			throws SaveOutputFileException {
-
+	public void save(InputArgument inputArguments, ReasultsContainer reasult) throws SaveOutputFileException {
 		boolean isAnyError = false;
 		try {
+			
+			if(reasult.getOneValueReport() == null && reasult.getRequestsReport() == null) {
+				throw new SaveOutputFileException("No data to save");
+			}
+		
 			RaportWriter raportWriter = raportWriterFactory.getRaportWriter(inputArguments.getOutputFile().getPath(),
 					inputArguments.getRaportType());
 
-			raportWriter.write(inputArguments.getOutputFile(), data);
+			if(reasult.getOneValueReport() != null) {
+				raportWriter.write(inputArguments.getOutputFile(), reasult.getOneValueReport());
+			} else{
+				raportWriter.writeList(inputArguments.getOutputFile(), reasult.getRequestsReport());
+			}
 
 		} catch (NoFileExtensionException | WrongFilePathExtension e) {
 			isAnyError = true;
@@ -49,14 +53,5 @@ public class RaportFileGenerator {
 		if (isAnyError) {
 			throw new SaveOutputFileException("Error while save: " + inputArguments.getOutputFile().getPath());
 		}
-	}
-
-	public void save(InputArgument inputArguments, ReasultsContainer reasult) throws SaveOutputFileException {
-		
-		
-//		 if (reasult.dataClass instanceof List<?>) {
-//			
-//			
-//		}
 	}
 }

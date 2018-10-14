@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.bootLogisticSystem.logic.mapper.MapperGenerator;
-import com.bootLogisticSystem.logic.raportGenerator.RaportFile.customWriter.RequestListRaportCsvCustomWriter;
+import com.bootLogisticSystem.logic.raportGenerator.raportFile.CsvRaportWriter;
 import com.bootLogisticSystem.utils.RandomRequest;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -19,16 +19,16 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 @SpringBootTest
 public class RequestListCsvRaportCustomWriterTest {
 	
-	private static RequestListRaportCsvCustomWriter requestListRaportCsvCustomWriter;
+	private static CsvRaportWriter csvRaportWriter;
 	
 	@BeforeClass
 	public static void setUp() {
-		requestListRaportCsvCustomWriter = new RequestListRaportCsvCustomWriter(new MapperGenerator().csvMapper());
+		csvRaportWriter = new CsvRaportWriter(new MapperGenerator().csvMapper());
 	}
 	
 	@Test
 	public void saveRaport() throws JsonGenerationException, JsonMappingException, IOException {
-		requestListRaportCsvCustomWriter.write(
+		csvRaportWriter.writeList(
 				new File("src/test/testResources/testOutputFolder/outCustomRequestList.csv"), 
 				RandomRequest.generate(100));
 	}

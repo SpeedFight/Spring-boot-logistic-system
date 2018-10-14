@@ -28,7 +28,7 @@ public class CsvRaportWriterTest {
 	
 	@Test
 	public void saveRaport() throws JsonGenerationException, JsonMappingException, IOException {
-		csvRaportWriter.write(
+		csvRaportWriter.writeList(
 				new File("src/test/testResources/testOutputFolder/out.csv"), 
 				RandomRequest.generate(100));
 	}
