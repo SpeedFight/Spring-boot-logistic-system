@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.exception.NoValidRaportDataGeneratorFoundException;
 import com.bootLogisticSystem.logic.raportGenerator.raportData.SumOfTotalOrderPrice;
+import com.bootLogisticSystem.logic.raportGenerator.raportData.TotalAverageOrderPrice;
 import com.bootLogisticSystem.logic.raportGenerator.raportData.TotalOrderCount;
 import com.bootLogisticSystem.model.InputArgument;
 import com.bootLogisticSystem.model.RaportType;
@@ -25,6 +26,9 @@ public class RaportGenerator {
 	
 	@Autowired
 	private SumOfTotalOrderPrice sumOfTotalOrderPrice;
+	
+	@Autowired
+	private TotalAverageOrderPrice totalAverageOrderPrice;
 
 	public OneValueReport generateSingleValueRaport(InputArgument inputArgument)
 			throws NoValidRaportDataGeneratorFoundException, InvalidParameterException {
@@ -56,9 +60,9 @@ public class RaportGenerator {
 		case F:
 			break;
 		case G:
-			break;
+			return totalAverageOrderPrice.generate();
 		case H:
-			break;
+			return totalAverageOrderPrice.generateByClientId(inputArgument.getClientId());
 		default:
 			throw new NoValidRaportDataGeneratorFoundException(
 					"Valid raport generator for raport type with code: " + selectedRaportType.getCode()
