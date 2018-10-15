@@ -1,11 +1,8 @@
 package com.bootLogisticSystem.logic.raportGenerator;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.exception.NoValidRaportDataGeneratorFoundException;
 import com.bootLogisticSystem.logic.raportGenerator.raportData.OrdersList;
@@ -15,7 +12,6 @@ import com.bootLogisticSystem.logic.raportGenerator.raportData.TotalOrderCount;
 import com.bootLogisticSystem.model.InputArgument;
 import com.bootLogisticSystem.model.RaportType;
 import com.bootLogisticSystem.model.ReasultsContainer;
-import com.bootLogisticSystem.model.raportTemplates.OneValueReport;
 import com.bootLogisticSystem.repository.RequestRepository;
 
 @Component

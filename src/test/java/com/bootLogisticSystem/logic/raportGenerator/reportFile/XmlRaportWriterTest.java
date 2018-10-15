@@ -6,17 +6,14 @@ import java.io.IOException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.bootLogisticSystem.logic.args.validators.ValidateInputPaths;
 import com.bootLogisticSystem.logic.mapper.MapperGenerator;
 import com.bootLogisticSystem.logic.raportGenerator.raportFile.XmlRaportWriter;
 import com.bootLogisticSystem.utils.RandomRequest;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
