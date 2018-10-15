@@ -17,7 +17,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * of software is read, parse, push to database and compute all input data by
  * way defined by user. It's all made with use of spring boot, why? Because why
  * not? We get database configuration for "free", data validation almost for
- * "free", IoC for "free". *free -> in matter of time spend to develop and test.
+ * "free", IoC for "free". *free -> in matter of time spend to develop and test. <br>
+ * 
+ * Go to Main.java to see logic
  * 
  * @author Karol Łukasiewicz
  *
