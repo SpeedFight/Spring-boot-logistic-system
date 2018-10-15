@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.bootLogisticSystem.entity.Request;
+import com.bootLogisticSystem.utils.Calculations;
 import com.bootLogisticSystem.utils.RandomRequest;
 
 @RunWith(SpringRunner.class)
@@ -32,16 +33,12 @@ public class RequestRepositoryTest {
 		
 		List<Request> requests = RandomRequest.generate(100);	
 		
-		double average = requests.stream()
-				.mapToDouble(Request::getPrice)
-				.average()
-				.orElse(Double.NaN);
+		double average = Calculations.getAverageOrderPrice(requests);
 			
 		orderRepository.saveAll(requests);
 		
 		assertEquals(average, orderRepository.getTotalAverageOrderPrice(), 1e-6);
 	}
-	
 	
 	@Test
 	public void getAverageOrderPriceFromClient() {
@@ -50,11 +47,7 @@ public class RequestRepositoryTest {
 		String clientId = requests.get(0).getClientId();
 		
 		//get first client id and calculate average value of his orders
-		double average = requests.stream()
-				.filter(e -> e.getClientId().equals(clientId))
-				.mapToDouble(Request::getPrice)
-				.average()
-				.orElse(Double.NaN);
+		double average = Calculations.getAverageOrderPriceFromClient(requests, clientId);
 		
 		orderRepository.saveAll(requests);
 		
@@ -78,9 +71,7 @@ public class RequestRepositoryTest {
 		
 		orderRepository.saveAll(requests);
 		
-		int ordersToClient = (int)requests.stream()
-				.filter(e -> e.getClientId().equals(clientId))
-				.count();	
+		int ordersToClient = (int)Calculations.countByClientID(requests, clientId);
 		
 		assertEquals(ordersToClient, orderRepository.countByClientId(clientId));
 	}
@@ -92,9 +83,7 @@ public class RequestRepositoryTest {
 		
 		orderRepository.saveAll(requests);
 		
-		double totalOrdersPrice = requests.stream()
-				.mapToDouble(Request::getPrice)
-				.sum();
+		double totalOrdersPrice = Calculations.getTotalOrderPrice(requests);
 		
 		assertEquals(totalOrdersPrice, orderRepository.getSumOfTotalOrderPrice(), 1e-6);
 	}
@@ -107,10 +96,7 @@ public class RequestRepositoryTest {
 		
 		orderRepository.saveAll(requests);
 		
-		double totalOrdersPrice = requests.stream()
-				.filter(e -> e.getClientId().equals(clientId))
-				.mapToDouble(Request::getPrice)
-				.sum();
+		double totalOrdersPrice = Calculations.getTotalOrderPriceFromClient(requests, clientId);
 		
 		assertEquals(totalOrdersPrice, orderRepository.getSumOfOrderPriceFromClient(clientId), 1e-6);
 	}
