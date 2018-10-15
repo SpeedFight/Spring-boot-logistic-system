@@ -77,5 +77,7 @@ public class RaportFileGenerator {
 		if (isAnyError) {
 			throw new SaveOutputFileException("Error while save: " + inputArguments.getOutputFile().getPath());
 		}
+		
+		Logger.info("Succesfully save file: " + inputArguments.getOutputFile().getPath());
 	}
 }

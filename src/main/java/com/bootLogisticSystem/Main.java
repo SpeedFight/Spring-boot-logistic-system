@@ -93,7 +93,6 @@ public class Main {
 			 * It is my fault now.
 			 */
 			Logger.error(e.getMessage());
-			e.printStackTrace();
 		}
 	}
 

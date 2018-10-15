@@ -40,11 +40,11 @@ public class BootLogisticSystemApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Logger.info("Program start work");
+		Logger.info("Program start");
 
 		main.main(args);
 
-		Logger.info("Program end work");
+		Logger.info("Program end");
 	}
 
 	private static void configureLogger() {
