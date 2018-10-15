@@ -2,7 +2,7 @@ package com.bootLogisticSystem.logic.raportGenerator.reportFile;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,9 +1,6 @@
 package com.bootLogisticSystem.logic.raportGenerator.reportFile;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertTrue;
-
-import java.io.File;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

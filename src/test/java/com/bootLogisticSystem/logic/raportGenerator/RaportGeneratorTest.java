@@ -1,10 +1,6 @@
 package com.bootLogisticSystem.logic.raportGenerator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
-import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
-import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 
@@ -13,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -28,7 +23,6 @@ import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.exception.NoValidRaportDataGeneratorFoundException;
 import com.bootLogisticSystem.model.InputArgument;
 import com.bootLogisticSystem.model.RaportType;
-import com.bootLogisticSystem.model.ReasultsContainer;
 import com.bootLogisticSystem.model.raportTemplates.OneValueReport;
 import com.bootLogisticSystem.repository.RequestRepository;
 import com.bootLogisticSystem.utils.Calculations;
