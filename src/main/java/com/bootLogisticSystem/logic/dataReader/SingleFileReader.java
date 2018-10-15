@@ -20,7 +20,7 @@ public class SingleFileReader {
 	@Autowired
 	private DataParserFactory dataParserFactory;
 
-	<T extends GenerateAble> List<T> parse(File fileToParse, Class<T> inputDataPojo) throws ImputFileEmpetyException {
+	public <T extends GenerateAble> List<T> parse(File fileToParse, Class<T> inputDataPojo) throws ImputFileEmpetyException {
 
 		Optional<List<T>> parsedData = Optional.empty();
 

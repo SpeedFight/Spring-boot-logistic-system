@@ -12,6 +12,12 @@ import org.apache.commons.cli.ParseException;
 import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.model.InputArgument;
 
+/**
+ * Contain parse input data mechanisms.
+ * 
+ * @author Karol Łukasiewicz
+ *
+ */
 public class InputArgumentParser {
 
 	private Options options;
@@ -46,7 +52,7 @@ public class InputArgumentParser {
 //			printHelp();
 			throw new InvalidParameterException(e.getMessage());
 		}
-		
+
 		CommandLine commandLine = commandLineOptional.get();
 
 		if (commandLine.hasOption("help")) {
@@ -58,11 +64,12 @@ public class InputArgumentParser {
 		String outputPath = commandLine.getOptionValue("output");
 		String raportType = commandLine.getOptionValue("raport");
 		String clientId = commandLine.getOptionValue("client-id");
-		
+
 		// more specific validation
-		InputArgument inputArgument = new InputArgumentValidator().validate(inputPaths, outputPath, raportType, clientId);
-		
-		return inputArgument;	
+		InputArgument inputArgument = new InputArgumentValidator().validate(inputPaths, outputPath, raportType,
+				clientId);
+
+		return inputArgument;
 	}
 
 	public void printHelp() {
@@ -71,7 +78,11 @@ public class InputArgumentParser {
 	}
 
 	private final String helpDescription = "Przykładowe użycie: \n"
-			+ "./run -i[pliki wejsciowe] -r[typ generowanego raportu] \n" + "./run -i -r[typ generowanego raportu]";
+			+ "run -i[pliki wejsciowe] -r[typ generowanego raportu] \n" + "\n"
+			+ "np: 'run -i input.xml -o output.csv -r b -c 1' - wygeneruje raport "
+			+ "zwracajacy ilosc zamowien dla klienta o id = 1, z pliku input.xml, wynik zapisze do pliku output.csv"
+			+ "\n" + "np: 'run -i in1.xml in2.csv -r e' - wygeneruje liste wszystkich zamowien parsujac "
+			+ "pliki in1.xml oraz in2.csv, wynik wyswietli w konsoli";
 
 	private final String inputOptionDescription = "[PARAMETR WYMAGANY][Jeden lub wiele] \n"
 			+ "Ściezka do jednego lubi wiecej plików wejsciowych. " + "Akcepowalne rozszerzenia to xml oraz csv.";
