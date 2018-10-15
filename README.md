@@ -2,19 +2,30 @@
 
 #budowanie:
 
-zależności:
-maven -> w zmiennej PATH
-java -> w zmiennej PATH
+zależności:  
+maven -> w zmiennej PATH  
+java -> w zmiennej PATH  
 
-Aby skompilować:
+## Aby skompilować:
 
-Linux:
+Linux:  
 ./compile.sh
 
-Windows
+Windows  
 compile.bat
 
+## Aby uruchomić
+Linux:  
+./run.sh [opcje]
+
+Windows  
+run.bat [opcje]
+
 # Przykład użycia:
+
+### Minimalna wymagana składnia:  
+### run -i[pliki wejsciowe] -r[typ generowanego raportu]  
+
 1)
 run --input input.xml --output out.csv --raport a
 lub
@@ -30,7 +41,16 @@ run -i in.xml in.csv -r a -c 1
 Przeparsuje pliku wejsciowe in.xml oraz in.cvs w celu uzyskania ilości zamówień łącznie dla klienta o id = 1.
 Wynik zostanie wypisany w konsoli.
 
-Opcje parametru raport:  
+3)
+run --input in.xml in.csv input/in.csv --output out/ --raport h --client-id 12
+lub
+run -i in.xml in.csv input/in.csv -o out/-r a -c 12
+
+Przeparsuje pliku wejsciowe in.xml, in.cvs oraz input/in.csvw celu uzyskania listy zamówień do klienta o identyfikatorze klienta id = 12.
+Wynik zostanie wypisany zapisany w folderze out w pliku output.csv (standardowa nazwa).
+
+## Generowane raporty:
+### Opcje parametru raport:  
 a Ilość zamówień łącznie,  
 b Ilość zamówień do klienta o wskazanym identyfikatorze,  
 c Łączna kwota zamówień,  
