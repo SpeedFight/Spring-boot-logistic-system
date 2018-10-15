@@ -5,11 +5,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.pmw.tinylog.Logger;
+
 import com.bootLogisticSystem.entity.GenerateAble;
 import com.bootLogisticSystem.entity.Request;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.MappingIterator;
+import com.fasterxml.jackson.databind.RuntimeJsonMappingException;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
@@ -43,7 +46,11 @@ public class CsvDataParser implements DataParser{
 		
 		List<T> requests = new ArrayList<>();
 		while (dataIterator.hasNext()) {
-			requests.add(dataIterator.next());
+			try {
+				requests.add(dataIterator.next());				
+			} catch (RuntimeJsonMappingException e) {
+				Logger.warn(e.getMessage());
+			}
 	    }
 		
 		return requests;
