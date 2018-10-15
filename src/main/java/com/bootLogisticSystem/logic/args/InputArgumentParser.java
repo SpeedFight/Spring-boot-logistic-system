@@ -92,7 +92,7 @@ public class InputArgumentParser {
 		formatter.printHelp(helpDescription, options);
 	}
 
-	private final String helpDescription = "Przykładowe użycie: \n"
+	private final String helpDescription = "Przykladowe uzycie: \n"
 			+ "run -i[pliki wejsciowe] -r[typ generowanego raportu] \n" + "\n"
 			+ "np: 'run -i input.xml -o output.csv -r b -c 1' - wygeneruje raport "
 			+ "zwracajacy ilosc zamowien dla klienta o id = 1, z pliku input.xml, wynik zapisze do pliku output.csv"
@@ -100,23 +100,26 @@ public class InputArgumentParser {
 			+ "pliki in1.xml oraz in2.csv, wynik wyswietli w konsoli";
 
 	private final String inputOptionDescription = "[PARAMETR WYMAGANY][Jeden lub wiele] \n"
-			+ "Ściezka do jednego lubi wiecej plików wejsciowych. " + "Akcepowalne rozszerzenia to xml oraz csv.";
+			+ "sciezka do jednego lubi wiecej plikow wejsciowych. " + "Akcepowalne rozszerzenia to xml oraz csv.";
 
-	private final String outputOptionDescription = "[Tylko jeden]Sćieżka do pliku wyjściowego. Może się kończyć rozszerzeniem .cvs/.xml. "
+	private final String outputOptionDescription = "[Tylko jeden]Sciezka do pliku wyjsciowego. Moze się kończyc rozszerzeniem .cvs/.xml. "
 			+ "W razie potrzeby wygeneruje potrzebne rozszerzenie (standardowo .scv), " + "oraz nazwę pliku.\n"
-			+ "Gdy nie podano ścieżki do pliku wyjściowego, wynik działania programu zostanie"
+			+ "Gdy nie podano sciezki do pliku wyjsciowego, wynik dzialania programu zostanie"
 			+ "wyswietlony w konsoli.";
 
 	private final String raportOptionDescription = "[PARAMETR WYMAGANY][Tylko jeden] Typ generowanego raportu\n "
-			+ "kod  | typ raportu \n" + " a   | Ilość zamówień łącznie,\n"
-			+ " b   | -||- do klienta o wskazanym identyfikatorze,\n" + " c   | Łączna kwota zamówień,\n"
-			+ " d   | -||- do klienta o wskazanym identyfikatorze,\n" + " e   | Lista wszystkich zamówień,\n"
-			+ " f   | -||- do klienta wskazanym identyfikatorze,\n" + " g   | Średnia wartość zamówienia ,\n"
+			+ "kod  | typ raportu \n" + " a   | Ilosc zamowień lacznie,\n"
+			+ " b   | -||- do klienta o wskazanym identyfikatorze,\n" 
+			+ " c   | laczna kwota zamowień,\n"
+			+ " d   | -||- do klienta o wskazanym identyfikatorze,\n" 
+			+ " e   | Lista wszystkich zamowień,\n"
+			+ " f   | -||- do klienta wskazanym identyfikatorze,\n" 
+			+ " g   | srednia wartosc zamowienia ,\n"
 			+ " h   | -||- do klienta o wskazanym identyfikatorze";
 
 	private final String clientIdOptionDescription = "[PARAMETR WYMAGANY z opcjami b, d, f, h parametru raport]\n"
-			+ "Identyfikator klienta. Jeśli podano nieistniejącego klienta, informacja o tym "
-			+ "zostanie wyświetlona po odczytaniu danych";
+			+ "Identyfikator klienta. Jesli podano nieistniejacego klienta, informacja o tym "
+			+ "zostanie wyswietlona po odczytaniu danych";
 
-	private final String helpOptionDescription = "Wypisują tą pomoc na ekranie.";
+	private final String helpOptionDescription = "Wypisuja ta pomoc na ekranie.";
 }
