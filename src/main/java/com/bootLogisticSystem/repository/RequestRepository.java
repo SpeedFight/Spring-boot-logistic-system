@@ -27,5 +27,5 @@ public interface RequestRepository extends CrudRepository<Request, Integer> {
 	@Query("SELECT AVG(price) FROM Request WHERE clientId=?1")
 	double getAverageOrderPriceFromClient(String clientId);
 	
-	boolean existsByRequestId(String requestId);
+	boolean existsByClientId(String clientId);
 }

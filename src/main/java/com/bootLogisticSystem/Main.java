@@ -87,11 +87,13 @@ public class Main {
 			 * but I see here that you made a typo hahaha, tough luck pal.
 			 */
 			Logger.error(e.getMessage());
+			new InputArgumentParser().printHelp();
 		} catch (Exception e) {
 			/*
 			 * It is my fault now.
 			 */
 			Logger.error(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 

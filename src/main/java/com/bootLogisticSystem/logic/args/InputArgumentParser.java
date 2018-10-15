@@ -44,15 +44,14 @@ public class InputArgumentParser {
 		try {
 			commandLineOptional = Optional.of(new DefaultParser().parse(options, args, false));
 		} catch (ParseException e) {
-			System.out.println(e.getMessage());
-			printHelp();
-			throw new InvalidParameterException();
+//			printHelp();
+			throw new InvalidParameterException(e.getMessage());
 		}
 		
 		CommandLine commandLine = commandLineOptional.get();
 
 		if (commandLine.hasOption("help")) {
-			printHelp();
+//			printHelp();
 			throw new InvalidParameterException();
 		}
 
@@ -67,7 +66,7 @@ public class InputArgumentParser {
 		return inputArgument;	
 	}
 
-	private void printHelp() {
+	public void printHelp() {
 		HelpFormatter formatter = new HelpFormatter();
 		formatter.printHelp(helpDescription, options);
 	}

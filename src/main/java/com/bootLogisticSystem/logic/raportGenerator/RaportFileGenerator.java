@@ -31,7 +31,7 @@ public class RaportFileGenerator {
 
 		if (reasult.getOneValueReport() != null) {
 			Logger.info(
-					reasult.getOneValueReport().getDescription() + "\n is: " + reasult.getOneValueReport().getValue());
+					reasult.getOneValueReport().getDescription() + "\n" + reasult.getOneValueReport().getValue());
 		} else {
 			for (Request oneRequest : reasult.getRequestsReport()) {
 				Logger.info(oneRequest);

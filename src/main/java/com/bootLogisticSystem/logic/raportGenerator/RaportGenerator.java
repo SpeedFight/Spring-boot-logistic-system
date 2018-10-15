@@ -48,12 +48,12 @@ public class RaportGenerator {
 						+ ", can't be generate because there's no client id selected");
 			}
 
-			if (orderRepository.existsByRequestId(inputArgument.getClientId())) {
+			if (orderRepository.existsByClientId(inputArgument.getClientId())) {
 				return true;
 			} else {
 				throw new InvalidParameterException("Selected report type to generate: " + "for raport type with code: "
 						+ selectedRaportType.getCode() + ", and description: " + selectedRaportType.getDescription()
-						+ ", can't be generate because there's no client id:  " + inputArgument.getClientId());
+						+ ", can't be generate because there's no client id: " + inputArgument.getClientId());
 			}
 
 		}
