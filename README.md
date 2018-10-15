@@ -30,15 +30,15 @@ run -i in.xml in.csv -r a -c 1
 Przeparsuje pliku wejsciowe in.xml oraz in.cvs w celu uzyskania ilości zamówień łącznie dla klienta o id = 1.
 Wynik zostanie wypisany w konsoli.
 
-Opcje parametry raport:
-a Ilość zamówień łącznie,
-b Ilość zamówień do klienta o wskazanym identyfikatorze,
-c Łączna kwota zamówień,
-d Łączna kwota zamówień do klienta o wskazanym identyfikatorze,
-e Lista wszystkich zamówień,
-f Lista zamówień do klienta o wskazanym identyfikatorze,
-g Średnia wartość zamówienia ,
-h Średnia wartość zamówienia do klienta o wskazanym identyfikatorze. 
+Opcje parametru raport:  
+a Ilość zamówień łącznie,  
+b Ilość zamówień do klienta o wskazanym identyfikatorze,  
+c Łączna kwota zamówień,  
+d Łączna kwota zamówień do klienta o wskazanym identyfikatorze,  
+e Lista wszystkich zamówień,  
+f Lista zamówień do klienta o wskazanym identyfikatorze,  
+g Średnia wartość zamówienia ,  
+h Średnia wartość zamówienia do klienta o wskazanym identyfikatorze.   
 
 # Warunki działania
 
@@ -84,36 +84,27 @@ Dostarczając przy tym stosowne informacje dlaczego.
 
 usage: Przykładowe użycie:  
 run -i[pliki wejsciowe] -r[typ generowanego raportu]  
+
  -c,--client-id <USER_ID>   [PARAMETR WYMAGANY z opcjami b, d, f, h  
-                            parametru raport]  
-                            Identyfikator klienta. Jeśli podano  
-                            nieistniejącego klienta, informacja o tym  
-                            zostanie wyświetlona po odczytaniu danych  
+ parametru raport]Identyfikator klienta. Jeśli podano nieistniejącego klienta, informacja o tym zostanie wyświetlona po odczytaniu danych
+
  -h,--help                  Wypisują tą pomoc na ekranie.  
- -i,--input <FILES>         [PARAMETR WYMAGANY][Jeden lub wiele]  
-                            Ściezka do jednego lubi wiecej plików  
-                            wejsciowych. Akcepowalne rozszerzenia to xml    
-                            oraz csv.    
- -o,--output <FILE>         [Tylko jeden]Sćieżka do pliku wyjściowego.  
-                            Może się kończyć rozszerzeniem .cvs/.xml. W  
-                            razie potrzeby wygeneruje potrzebne  
-                            rozszerzenie (standardowo .scv), oraz nazwę  
-                            pliku.  
-                            Gdy nie podano ścieżki do pliku wyjściowego,  
-                            wynik działania programu zostaniewyswietlony w  
-                            konsoli.  
- -r,--raport <OPTION>       [PARAMETR WYMAGANY][Tylko jeden] Typ  
-                            generowanego raportu  
-                            kod  | typ raportu  
-                            a   | Ilość zamówień łącznie,  
-                            b   | -||- do klienta o wskazanym identyfikatorze,  
-                            c   | Łączna kwota zamówień,  
-                            d   | -||- do klienta o wskazanym identyfikatorze,  
-                            e   | Lista wszystkich zamówień,  
-                            f   | -||- do klienta wskazanym identyfikatorze,  
-                            g   | Średnia wartość zamówienia ,  
-                            h   | -||- do klienta o wskazanym identyfikatorze  
-                            
-                            
-////////////  
-Karol Łukasiewicz
+
+ -i,--input <FILES>         [PARAMETR WYMAGANY][Jeden lub wiele] Ściezka do jednego lubi wiecej plików wejsciowych. Akcepowalne rozszerzenia to xml oraz csv.   
+
+ -o,--output <FILE>         [Tylko jeden]Sćieżka do pliku wyjściowego. Może się kończyć rozszerzeniem .cvs/.xml. W razie potrzeby wygeneruje potrzebne  rozszerzenie (standardowo .scv), oraz nazwę  pliku. Gdy nie podano ścieżki do pliku wyjściowego,wynik działania programu zostaniewyswietlony w konsoli.
+
+ -r,--raport <OPTION>       [PARAMETR WYMAGANY][Tylko jeden] Typ generowanego raportu:  
+ Opcje parametru raport:  
+a Ilość zamówień łącznie,
+b Ilość zamówień do klienta o wskazanym identyfikatorze,  
+c Łączna kwota zamówień,  
+d Łączna kwota zamówień do klienta o wskazanym identyfikatorze,  
+e Lista wszystkich zamówień,  
+f Lista zamówień do klienta o wskazanym identyfikatorze,  
+g Średnia wartość zamówienia ,  
+h Średnia wartość zamówienia do klienta o wskazanym identyfikatorze. 
+
+                         
+Copyright (c) 2018 Karol Łukasiewicz  
+Karol Łukasiewicz  
