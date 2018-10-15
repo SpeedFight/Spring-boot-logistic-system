@@ -14,13 +14,28 @@ import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.NoValidDataParserFoundException;
 import com.bootLogisticSystem.exception.WrongFilePathExtension;
 
+/**
+ * Provide functionality to read single file.
+ * 
+ * @author Karol Łukasiewicz
+ *
+ */
 @Component
 public class SingleFileReader {
 
 	@Autowired
 	private DataParserFactory dataParserFactory;
 
-	public <T extends GenerateAble> List<T> parse(File fileToParse, Class<T> inputDataPojo) throws ImputFileEmpetyException {
+	/**
+	 * Read and parse single file
+	 * 
+	 * @param fileToParse   Path to correct input file
+	 * @param inputDataPojo pojo data represents parsed data
+	 * @return list with parsed objects
+	 * @throws ImputFileEmpetyException thrown when file is empty
+	 */
+	public <T extends GenerateAble> List<T> parse(File fileToParse, Class<T> inputDataPojo)
+			throws ImputFileEmpetyException {
 
 		Optional<List<T>> parsedData = Optional.empty();
 
