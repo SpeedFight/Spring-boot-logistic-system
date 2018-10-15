@@ -43,6 +43,7 @@ public class RaportFileGenerator {
 
 		if (inputArguments.getOutputFile() == null) {
 			printData(inputArguments, reasult);
+			return;
 		}
 
 		boolean isAnyError = false;

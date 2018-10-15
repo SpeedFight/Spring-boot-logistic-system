@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.bootLogisticSystem.entity.GenerateAble;
+import com.bootLogisticSystem.entity.Request;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -33,11 +34,11 @@ public class XmlDataParser implements DataParser {
 	}
 
 	@Override
-	public <T extends GenerateAble> List<T> parse(File fileToParse, Class<T> inputDataPojo)
+	public <T extends GenerateAble> List<T> parse(File fileToParse)
 			throws JsonParseException, JsonMappingException, IOException {
 		
 		return xmlMapper.readValue(fileToParse,
-				new TypeReference<List<T>>() {
+				new TypeReference<List<Request>>() {
 				});
 	}
 

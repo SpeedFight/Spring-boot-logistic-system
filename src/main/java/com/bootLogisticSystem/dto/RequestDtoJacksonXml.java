@@ -16,7 +16,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
  *
  */
 @JacksonXmlRootElement(localName = "requests")
-public class RequestDtoJacksonXml implements GenerateAble {
+public class RequestDtoJacksonXml extends GenerateAble {
 	// look at me, now I generate correct elements tag in xml
 	
 	@JsonProperty

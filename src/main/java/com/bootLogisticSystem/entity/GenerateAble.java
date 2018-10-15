@@ -7,6 +7,6 @@ package com.bootLogisticSystem.entity;
  * @author Karol Łukasiewicz
  *
  */
-public interface GenerateAble {
+public class GenerateAble {
 
 }

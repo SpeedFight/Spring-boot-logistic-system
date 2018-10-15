@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({"description", "value"})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class OneValueReport implements GenerateAble{
+public class OneValueReport extends GenerateAble{
 	
 	private String description;
 	private String value;

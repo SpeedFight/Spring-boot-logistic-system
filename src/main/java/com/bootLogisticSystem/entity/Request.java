@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 @JsonPropertyOrder({"clientId", "requestId", "name", "quantity", "price"})
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Request implements GenerateAble{
+public class Request extends GenerateAble{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

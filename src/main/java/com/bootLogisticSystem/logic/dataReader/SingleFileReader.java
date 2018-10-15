@@ -26,7 +26,7 @@ public class SingleFileReader {
 
 		try {
 			DataParser dataParser = dataParserFactory.getDataParser(fileToParse.getPath());
-			parsedData = Optional.of(dataParser.parse(fileToParse, inputDataPojo));
+			parsedData = Optional.of(dataParser.parse(fileToParse));
 		} catch (NoFileExtensionException | WrongFilePathExtension | NoValidDataParserFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

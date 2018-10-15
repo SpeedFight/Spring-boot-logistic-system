@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.bootLogisticSystem.entity.GenerateAble;
+import com.bootLogisticSystem.entity.Request;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.MappingIterator;
@@ -31,12 +32,12 @@ public class CsvDataParser implements DataParser{
 	}
 
 	@Override
-	public <T extends GenerateAble> List<T> parse(File fileToParse, Class<T> inputDataPojo)
+	public <T extends GenerateAble> List<T> parse(File fileToParse)
 			throws JsonParseException, JsonMappingException, IOException {
 		
 		CsvSchema schema = CsvSchema.emptySchema().withHeader(); 
 		 MappingIterator<T> dataIterator = csvMapper
-				    .readerFor(inputDataPojo.getClass())
+				    .readerFor(Request.class)
 				    .with(schema)
 				    .readValues(fileToParse);
 		
@@ -47,25 +48,5 @@ public class CsvDataParser implements DataParser{
 		
 		return requests;
 	}
-
-//	@Override
-//	<T extends GenerateAble> public List<T> getRequests(InputStream document)
-//			throws JsonParseException, JsonMappingException, IOException {
-//		
-//		CsvSchema schema = CsvSchema.emptySchema().withHeader(); 
-//		 MappingIterator<Request> dataIterator = csvMapper()
-//				    .readerFor(Request.class)
-//				    .with(schema)
-//				    .readValues(document);
-//		
-//		List<Request> requests = new ArrayList<>();
-//		while (dataIterator.hasNext()) {
-//			requests.add(dataIterator.next());
-//	    }
-//		
-//		return requests;
-//	}
-//	
-	
 
 }

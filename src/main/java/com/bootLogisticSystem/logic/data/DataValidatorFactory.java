@@ -9,10 +9,10 @@ public class DataValidatorFactory {
 
 	public static <T extends GenerateAble> DataValidator getDataValidator(Class<T> pojo, ValidationError validationError) throws NoValidDataValidatorFound{
 		
-		if (pojo.isInstance(Request.class)) {
+		if (pojo.getClass().isInstance(Request.class)) {
 			return new RequestDataValidator(validationError);
 		} else {
-			throw new NoValidDataValidatorFound("No data validator found for: " + pojo.getTypeName() + " type"); 
+			throw new NoValidDataValidatorFound("No data validator found for: " + pojo.getTypeName() + " type "); 
 		}
 	}
 }

@@ -1,8 +1,9 @@
 package com.bootLogisticSystem.logic.raportGenerator.raportData;
 
+import com.bootLogisticSystem.entity.GenerateAble;
 import com.bootLogisticSystem.model.raportTemplates.OneValueReport;
 
-public abstract class SingleValueRaportGenerator {
+public abstract class SingleValueRaportGenerator extends GenerateAble{
 
 	abstract OneValueReport generate();
 	abstract OneValueReport generateByClientId(String userId);
