@@ -1,23 +1,4 @@
-<requests>
-  <request>
-    <clientId>12</clientId>
-    <requestId>3</requestId>
-    <name>Cukier</name>
-    <quantity>9</quantity>
-    <price>8.080137140443565</price>
-  </request>
-  <request>
-    <clientId>Vince</clientId>
-    <requestId>18</requestId>
-    <name>Makaron</name>
-    <quantity>5</quantity>
-    <price>6.892926752310949</price>
-  </request>
-  <request>
-    <clientId>Lili</clientId>
-    <requestId>6</requestId>
-    <name>Babeczki</name>
-    <quantity>8</quantity>
-    <price>1.9520731879199467</price>
-  </request>
-</requests>
+<OneValueReport>
+  <description>test</description>
+  <value>123</value>
+</OneValueReport>
