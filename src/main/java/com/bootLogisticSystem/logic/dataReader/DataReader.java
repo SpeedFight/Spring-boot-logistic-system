@@ -12,25 +12,40 @@ import com.bootLogisticSystem.entity.GenerateAble;
 import com.bootLogisticSystem.exception.ImputFileEmpetyException;
 import com.bootLogisticSystem.model.InputArgument;
 
+/**
+ * Provide parse file ability.
+ * 
+ * @author Karol Łukasiewicz
+ *
+ */
 @Component
 public class DataReader {
 
 	@Autowired
 	SingleFileReader singleFileReader;
 
-	public <T extends GenerateAble> List<T> parse(InputArgument inputArgument, Class<T> inputDataPojo) throws ImputFileEmpetyException {
+	/**
+	 * Parse files in inputArgument
+	 * 
+	 * @param inputArgument Input arguments
+	 * @param inputDataPojo Class that represents data pojo
+	 * @return list with parsed data
+	 * @throws ImputFileEmpetyException throw when can't obtain data
+	 */
+	public <T extends GenerateAble> List<T> parse(InputArgument inputArgument, Class<T> inputDataPojo)
+			throws ImputFileEmpetyException {
 
 		List<T> parsedData = new ArrayList<>();
 
-		for(File fileToParse : inputArgument.getInputFiles()) {
+		for (File fileToParse : inputArgument.getInputFiles()) {
 			try {
 				parsedData.addAll(singleFileReader.parse(fileToParse, inputDataPojo));
 			} catch (ImputFileEmpetyException e) {
 				Logger.warn(e.getMessage());
 			}
 		}
-		
-		if(parsedData.size() > 0) {
+
+		if (parsedData.size() > 0) {
 			return parsedData;
 		} else {
 			throw new ImputFileEmpetyException("All files selected to parse is empety or not contain valid data");
