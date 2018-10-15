@@ -14,6 +14,12 @@ import com.bootLogisticSystem.model.RaportType;
 import com.bootLogisticSystem.model.ReasultsContainer;
 import com.bootLogisticSystem.repository.RequestRepository;
 
+/**
+ * Generate raport data
+ * 
+ * @author Karol Łukasiewicz
+ *
+ */
 @Component
 public class RaportGenerator {
 
@@ -32,6 +38,13 @@ public class RaportGenerator {
 	@Autowired
 	private OrdersList ordersList;
 
+	/**
+	 * Check if input data contain all data needed to generate report.
+	 * 
+	 * @param inputArgument Input arguments
+	 * @return True if can generate report otherwise it thrown exception
+	 * @throws InvalidParameterException When not enough data to generate report
+	 */
 	private boolean isCanGenerateRaport(InputArgument inputArgument) throws InvalidParameterException {
 
 		RaportType selectedRaportType = inputArgument.getRaportType();
@@ -57,9 +70,20 @@ public class RaportGenerator {
 		return true;
 	}
 
+	/**
+	 * Generate report from data in database.
+	 * 
+	 * @param inputArgument Input arguments
+	 * @return obejct with data
+	 * @throws NoValidRaportDataGeneratorFoundException thrown when not found report
+	 *                                                  generator to generate
+	 *                                                  selected report
+	 * @throws InvalidParameterException                thrown when some data is
+	 *                                                  invalid
+	 */
 	public ReasultsContainer generateRaport(InputArgument inputArgument)
 			throws NoValidRaportDataGeneratorFoundException, InvalidParameterException {
-		
+
 		isCanGenerateRaport(inputArgument);
 
 		RaportType selectedRaportType = inputArgument.getRaportType();

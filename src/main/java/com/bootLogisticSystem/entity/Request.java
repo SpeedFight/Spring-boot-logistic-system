@@ -148,7 +148,6 @@ public class Request extends GenerateAble{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((clientId == null) ? 0 : clientId.hashCode());
-		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(price);
@@ -172,8 +171,6 @@ public class Request extends GenerateAble{
 				return false;
 		} else if (!clientId.equals(other.clientId))
 			return false;
-		if (id != other.id)
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -187,5 +184,7 @@ public class Request extends GenerateAble{
 			return false;
 		return true;
 	}
+
+
 	
 }

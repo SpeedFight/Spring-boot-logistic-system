@@ -16,6 +16,11 @@ import com.bootLogisticSystem.logic.raportGenerator.raportFile.RaportWriterFacto
 import com.bootLogisticSystem.model.InputArgument;
 import com.bootLogisticSystem.model.ReasultsContainer;
 
+/**
+ * Generate file with results
+ * @author Karol Łukasiewicz
+ *
+ */
 @Component
 public class RaportFileGenerator {
 
@@ -30,8 +35,7 @@ public class RaportFileGenerator {
 		Logger.info("Output reasults for:  " + inputArguments.getRaportType().getDescription());
 
 		if (reasult.getOneValueReport() != null) {
-			Logger.info(
-					reasult.getOneValueReport().getDescription() + "\n" + reasult.getOneValueReport().getValue());
+			Logger.info(reasult.getOneValueReport().getDescription() + "\n" + reasult.getOneValueReport().getValue());
 		} else {
 			for (Request oneRequest : reasult.getRequestsReport()) {
 				Logger.info(oneRequest);
@@ -39,6 +43,13 @@ public class RaportFileGenerator {
 		}
 	}
 
+	/**
+	 * Save selected reasult to file
+	 * 
+	 * @param inputArguments
+	 * @param reasult
+	 * @throws SaveOutputFileException
+	 */
 	public void save(InputArgument inputArguments, ReasultsContainer reasult) throws SaveOutputFileException {
 
 		if (inputArguments.getOutputFile() == null) {
@@ -77,7 +88,7 @@ public class RaportFileGenerator {
 		if (isAnyError) {
 			throw new SaveOutputFileException("Error while save: " + inputArguments.getOutputFile().getPath());
 		}
-		
+
 		Logger.info("Succesfully save file: " + inputArguments.getOutputFile().getPath());
 	}
 }

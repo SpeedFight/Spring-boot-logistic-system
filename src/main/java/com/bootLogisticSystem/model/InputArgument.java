@@ -4,18 +4,18 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Class validate and keep data with info
- * where load and save file.
- * @author speedfight
+ * Class validate and keep data with info where load and save file.
+ * 
+ * @author Karol Łukasiewicz
  *
  */
 public class InputArgument {
-	
+
 	private final List<File> inputFiles;
 	private final File outputFile;
 	private final RaportType raportType;
 	private final String clientId;
-	
+
 	public InputArgument(List<File> inputFiles, File outputFile, RaportType raport, String clientId) {
 		super();
 		this.inputFiles = inputFiles;
@@ -39,9 +39,9 @@ public class InputArgument {
 	public String getClientId() {
 		return clientId;
 	}
-	
+
 	public boolean isClientIdSelected() {
-		if(clientId == null || clientId.contentEquals("")) {
+		if (clientId == null || clientId.contentEquals("")) {
 			return false;
 		} else {
 			return true;

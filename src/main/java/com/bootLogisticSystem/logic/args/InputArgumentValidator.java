@@ -11,13 +11,17 @@ import com.bootLogisticSystem.logic.args.validators.ValidateRaportType;
 import com.bootLogisticSystem.model.InputArgument;
 import com.bootLogisticSystem.model.RaportType;
 
+/**
+ * @author Karol Łukasiewicz
+ *
+ */
 public class InputArgumentValidator {
-	
+
 	private ValidateClientId validateClientId;
 	private ValidateInputPaths validateInputPaths;
 	private ValidateOutputPath validateOutputPath;
 	private ValidateRaportType validateRaportType;
-	
+
 	public InputArgumentValidator() {
 		// set dependency
 		validateClientId = new ValidateClientId();
@@ -26,33 +30,38 @@ public class InputArgumentValidator {
 		validateRaportType = new ValidateRaportType();
 	};
 
-	public InputArgument validate(String[] inputPaths, 
-			String outputPath, 
-			String raportType, 
-			String clientId) throws InvalidParameterException{
-		
-		
-		
-		return new InputArgument(validateInputPaths(inputPaths), 
-				validateOutputFile(outputPath), 
-				validateRaportType(raportType), 
-				validateClientId(clientId));
+	/**
+	 * Validate input params to return correct InputArgument object which contain
+	 * only correct data.
+	 * 
+	 * @param inputPaths Paths to input files
+	 * @param outputPath Path to input file (can be null)
+	 * @param raportType Type of report to generate
+	 * @param clientId   Client id if needed
+	 * @return Validated InputArgument object
+	 * @throws InvalidParameterException throw when too much data is invalid
+	 */
+	public InputArgument validate(String[] inputPaths, String outputPath, String raportType, String clientId)
+			throws InvalidParameterException {
+
+		return new InputArgument(validateInputPaths(inputPaths), validateOutputFile(outputPath),
+				validateRaportType(raportType), validateClientId(clientId));
 	}
-	
-	private List<File> validateInputPaths(String[] inputPaths) throws InvalidParameterException{
+
+	private List<File> validateInputPaths(String[] inputPaths) throws InvalidParameterException {
 		return validateInputPaths.validate(inputPaths);
 	}
-	
-	private File validateOutputFile(String outputPath) throws InvalidParameterException{
+
+	private File validateOutputFile(String outputPath) throws InvalidParameterException {
 		return validateOutputPath.validate(outputPath);
 	}
-	
-	private RaportType validateRaportType(String raportType) throws InvalidParameterException{
+
+	private RaportType validateRaportType(String raportType) throws InvalidParameterException {
 		return validateRaportType.validate(raportType);
 	}
-	
-	private String validateClientId(String clientId) throws InvalidParameterException{
+
+	private String validateClientId(String clientId) throws InvalidParameterException {
 		return validateClientId.validate(clientId);
 	}
-	
+
 }

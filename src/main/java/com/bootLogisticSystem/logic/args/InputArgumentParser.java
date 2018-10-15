@@ -42,6 +42,14 @@ public class InputArgumentParser {
 
 	};
 
+	/**
+	 * Parse and validate input arguments
+	 * 
+	 * @param args program input arguments
+	 * @return Validated input arguments
+	 * @throws InvalidParameterException throw when too much input arguments are
+	 *                                   invalid
+	 */
 	public InputArgument parseArgs(String[] args) throws InvalidParameterException {
 		Optional<CommandLine> commandLineOptional = Optional.empty();
 
