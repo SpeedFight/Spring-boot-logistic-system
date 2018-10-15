@@ -43,7 +43,7 @@ public class ValidateInputPathsTest {
 		String[] inputFileArray = { "no.jpg", "no.txt", "no.pdf", "folder/noSuchFile.xml", "Nofolder/noSuchFile.csv" };
 		List<String> inputFileList = createFileList(inputFileArray);
 
-		List<File> fileList = validateInputPaths.validate(inputFileList.toArray(new String[inputFileList.size()]));
+		validateInputPaths.validate(inputFileList.toArray(new String[inputFileList.size()]));
 	}
 
 	@Test

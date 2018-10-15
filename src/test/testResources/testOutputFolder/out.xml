@@ -1,4 +1,23 @@
-<OneValueReport>
-  <description>test</description>
-  <value>123</value>
-</OneValueReport>
+<requests>
+  <request>
+    <clientId>Karl</clientId>
+    <requestId>10</requestId>
+    <name>Wołowina</name>
+    <quantity>7</quantity>
+    <price>3.159073071025144</price>
+  </request>
+  <request>
+    <clientId>Lili</clientId>
+    <requestId>8</requestId>
+    <name>Kawa</name>
+    <quantity>4</quantity>
+    <price>8.415489430678514</price>
+  </request>
+  <request>
+    <clientId>2</clientId>
+    <requestId>15</requestId>
+    <name>Keczup</name>
+    <quantity>2</quantity>
+    <price>9.623059681752702</price>
+  </request>
+</requests>

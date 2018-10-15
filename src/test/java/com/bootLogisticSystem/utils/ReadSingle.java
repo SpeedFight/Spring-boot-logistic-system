@@ -7,8 +7,6 @@ import java.util.List;
 
 import org.pmw.tinylog.Logger;
 
-import com.bootLogisticSystem.entity.GenerateAble;
-import com.bootLogisticSystem.entity.Request;
 import com.bootLogisticSystem.model.raportTemplates.OneValueReport;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;

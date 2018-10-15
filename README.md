@@ -21,6 +21,10 @@ Linux:
 Windows  
 run.bat [opcje]
 
+### Uruchomienie testów
+Linux:  
+./test.sh
+
 # Przykład użycia:
 
 ### Minimalna wymagana składnia:  
