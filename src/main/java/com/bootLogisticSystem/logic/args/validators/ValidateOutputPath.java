@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2018 Karol Łukasiewicz
+ *
+ * @author Karol Łukasiewicz
+ * @date 15 Oct 2018
+ * 
+ */
 package com.bootLogisticSystem.logic.args.validators;
 
 import java.io.File;
@@ -13,11 +20,23 @@ import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.WrongFilePathExtension;
 import com.bootLogisticSystem.utils.Utils;
 
+/**
+ * Class provide validation of output path.
+ * 
+ * @author Karol Łukasiewicz
+ *
+ */
 public class ValidateOutputPath {
 
 	public ValidateOutputPath() {
 	};
 
+	/**
+	 * Validate output path
+	 * @param outputPath oput path to validate
+	 * @return validated output file
+	 * @throws InvalidParameterException Thrown when path is unreadable or too wrong
+	 */
 	public File validate(String outputPath) throws InvalidParameterException {
 
 		if (outputPath == null) {

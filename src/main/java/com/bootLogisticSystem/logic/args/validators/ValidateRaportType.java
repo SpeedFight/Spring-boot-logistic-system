@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2018 Karol Łukasiewicz
+ *
+ * @author Karol Łukasiewicz
+ * @date 15 Oct 2018
+ * 
+ */
 package com.bootLogisticSystem.logic.args.validators;
 
 import java.util.Optional;
@@ -5,6 +12,11 @@ import java.util.Optional;
 import com.bootLogisticSystem.exception.InvalidParameterException;
 import com.bootLogisticSystem.model.RaportType;
 
+/**
+ * 
+ * @author Karol Łukasiewicz
+ *
+ */
 public class ValidateRaportType {
 
 	public ValidateRaportType() {};

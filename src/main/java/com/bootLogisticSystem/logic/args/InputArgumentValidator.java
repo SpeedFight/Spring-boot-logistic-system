@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2018 Karol Łukasiewicz
+ *
+ * @author Karol Łukasiewicz
+ * @date 15 Oct 2018
+ * 
+ */
 package com.bootLogisticSystem.logic.args;
 
 import java.io.File;
@@ -12,6 +19,8 @@ import com.bootLogisticSystem.model.InputArgument;
 import com.bootLogisticSystem.model.RaportType;
 
 /**
+ * Class provide all input argument validation
+ * 
  * @author Karol Łukasiewicz
  *
  */
@@ -31,7 +40,7 @@ public class InputArgumentValidator {
 	};
 
 	/**
-	 * Validate input params to return correct InputArgument object which contain
+	 * Validate input parameters to return correct InputArgument object which contain
 	 * only correct data.
 	 * 
 	 * @param inputPaths Paths to input files

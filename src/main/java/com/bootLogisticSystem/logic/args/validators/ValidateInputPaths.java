@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2018 Karol Łukasiewicz
+ *
+ * @author Karol Łukasiewicz
+ * @date 15 Oct 2018
+ * 
+ */
 package com.bootLogisticSystem.logic.args.validators;
 
 import java.io.File;
@@ -14,11 +21,24 @@ import com.bootLogisticSystem.exception.NoFileExtensionException;
 import com.bootLogisticSystem.exception.WrongFilePathExtension;
 import com.bootLogisticSystem.utils.Utils;
 
+/**
+ * Class provide validation of input paths.
+ * 
+ * @author Karol Łukasiewicz
+ *
+ */
 public class ValidateInputPaths {
 
 	public ValidateInputPaths() {
 	};
 
+	/**
+	 * Validate input paths
+	 * 
+	 * @param inputPaths array of input paths
+	 * @return validated list of input paths
+	 * @throws InvalidParameterException thrown when all paths are empety.
+	 */
 	public List<File> validate(String[] inputPaths) throws InvalidParameterException {
 
 		List<File> validFiles = new ArrayList<>();
