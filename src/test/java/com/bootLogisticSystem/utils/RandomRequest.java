@@ -35,11 +35,11 @@ public class RandomRequest {
 		return requests;
 	}
 
-	private static String getRandomProduct() {
+	public static String getRandomProduct() {
 		return products.get(random.nextInt(products.size()));		
 	}
 	
-	private static String getRandomClientId() {
+	public static String getRandomClientId() {
 		return clientsId.get(random.nextInt(clientsId.size()));	
 	}
 

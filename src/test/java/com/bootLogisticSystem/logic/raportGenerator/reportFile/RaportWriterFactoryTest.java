@@ -35,6 +35,9 @@ public class RaportWriterFactoryTest {
 		return "test.csv";
 	}
 	
+	/*
+	 * These tests check if factory return correct obejct
+	 */
 	
 	@Test
 	public void getXmlRaportTypeA() throws NoFileExtensionException, WrongFilePathExtension, NoValidRaportWriterFound {

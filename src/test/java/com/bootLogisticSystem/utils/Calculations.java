@@ -1,6 +1,8 @@
 package com.bootLogisticSystem.utils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.bootLogisticSystem.entity.Request;
 
@@ -44,6 +46,12 @@ public class Calculations {
 				.filter(e -> e.getClientId().equals(clientId))
 				.mapToDouble(Request::getPrice)
 				.sum();
+	}
+	
+	public static List<Request> getTAllRequestForClient(List<Request> requests, String clientId) {
+		return requests.stream()
+				.filter(e -> e.getClientId().equals(clientId))
+				.collect(Collectors.toList());
 	}
 	
 }
