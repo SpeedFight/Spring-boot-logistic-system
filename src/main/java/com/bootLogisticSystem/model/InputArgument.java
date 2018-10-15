@@ -41,10 +41,10 @@ public class InputArgument {
 	}
 	
 	public boolean isClientIdSelected() {
-		if(clientId != null && !clientId.contentEquals("")) {
-			return true;
-		} else {
+		if(clientId == null || clientId.contentEquals("")) {
 			return false;
+		} else {
+			return true;
 		}
 	}
 }

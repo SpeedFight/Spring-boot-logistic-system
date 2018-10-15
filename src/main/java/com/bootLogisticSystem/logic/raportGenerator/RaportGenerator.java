@@ -26,32 +26,48 @@ public class RaportGenerator {
 
 	@Autowired
 	private TotalOrderCount totalOrderCount;
-	
+
 	@Autowired
 	private SumOfTotalOrderPrice sumOfTotalOrderPrice;
-	
+
 	@Autowired
 	private TotalAverageOrderPrice totalAverageOrderPrice;
-	
+
 	@Autowired
 	private OrdersList ordersList;
 
-	public ReasultsContainer generateRaport(InputArgument inputArgument)
-			throws NoValidRaportDataGeneratorFoundException, InvalidParameterException {
+	private boolean isCanGenerateRaport(InputArgument inputArgument) throws InvalidParameterException {
 
 		RaportType selectedRaportType = inputArgument.getRaportType();
 
-		if (selectedRaportType.isRequireClientId() && inputArgument.isClientIdSelected()) {
-			if(orderRepository.existsByRequestId(inputArgument.getClientId())) {
-				
-				throw new InvalidParameterException("Selected report type to generate: "
-						+ "for raport type with code: " + selectedRaportType.getCode() 
-						+ ", and description:" + selectedRaportType.getDescription() 
-						+ ", can't be generate because there's no user:  " 
-						+ inputArgument.isClientIdSelected());
+		if (selectedRaportType.isRequireClientId()) {
+
+			if (!inputArgument.isClientIdSelected()) {
+				throw new InvalidParameterException("Selected report type to generate: " + "for raport type with code: "
+						+ selectedRaportType.getCode() + ", and description: " + selectedRaportType.getDescription()
+						+ ", can't be generate because there's no client id selected");
 			}
+
+			if (orderRepository.existsByRequestId(inputArgument.getClientId())) {
+				return true;
+			} else {
+				throw new InvalidParameterException("Selected report type to generate: " + "for raport type with code: "
+						+ selectedRaportType.getCode() + ", and description: " + selectedRaportType.getDescription()
+						+ ", can't be generate because there's no client id:  " + inputArgument.getClientId());
+			}
+
 		}
+
+		return true;
+	}
+
+	public ReasultsContainer generateRaport(InputArgument inputArgument)
+			throws NoValidRaportDataGeneratorFoundException, InvalidParameterException {
 		
+		isCanGenerateRaport(inputArgument);
+
+		RaportType selectedRaportType = inputArgument.getRaportType();
+
 		ReasultsContainer reasult;
 
 		switch (selectedRaportType) {
@@ -84,7 +100,7 @@ public class RaportGenerator {
 					"Valid raport generator for raport type with code: " + selectedRaportType.getCode()
 							+ ", and description:" + selectedRaportType.getDescription() + " not found");
 		}
-		
+
 		return reasult;
 	}
 }

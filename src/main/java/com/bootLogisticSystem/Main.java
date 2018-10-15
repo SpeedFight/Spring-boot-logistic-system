@@ -2,6 +2,7 @@ package com.bootLogisticSystem;
 
 import java.util.List;
 
+import org.pmw.tinylog.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -85,11 +86,12 @@ public class Main {
 			 * heh I was almost forced to face the fact that my argument validation was bad,
 			 * but I see here that you made a typo hahaha, tough luck pal.
 			 */
+			Logger.error(e.getMessage());
 		} catch (Exception e) {
 			/*
 			 * It is my fault now.
 			 */
-			e.printStackTrace();
+			Logger.error(e.getMessage());
 		}
 	}
 
